@@ -65,3 +65,29 @@ def crop_around(frame: np.ndarray, x: int, y: int, radius: int) -> np.ndarray:
     top, bottom = max(0, y - radius), min(frame.shape[0], y + radius + 1)
     left, right = max(0, x - radius), min(frame.shape[1], x + radius + 1)
     return frame[top:bottom, left:right].copy()
+
+
+def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:
+    """Detect a newly opened, persistent loot-sized panel in the upper-left."""
+    if before.shape != after.shape or before.ndim != 3:
+        return False
+    height, width = after.shape[:2]
+    # The classic loot window opens in this quadrant; ratios keep the check
+    # independent of the user's resolution.
+    before_roi = before[:round(height * 0.48), :round(width * 0.38)]
+    after_roi = after[:round(height * 0.48), :round(width * 0.38)]
+    changed = cv2.cvtColor(cv2.absdiff(before_roi, after_roi), cv2.COLOR_BGR2GRAY)
+    mask = (changed >= 24).astype(np.uint8) * 255
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((15, 15), np.uint8))
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    roi_area = before_roi.shape[0] * before_roi.shape[1]
+    for contour in contours:
+        x, y, box_width, box_height = cv2.boundingRect(contour)
+        area = box_width * box_height
+        if area < roi_area * 0.035 or box_height < box_width * 0.7:
+            continue
+        panel = after_roi[y:y + box_height, x:x + box_width]
+        dark_ratio = float(np.mean(cv2.cvtColor(panel, cv2.COLOR_BGR2GRAY) < 85))
+        if dark_ratio >= 0.42:
+            return True
+    return False

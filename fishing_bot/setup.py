@@ -46,15 +46,18 @@ def _select(frame, boxes: list[tuple[int, int, int, int]]) -> tuple[int, int]:
     return point[0]
 
 
-def run_setup(window: WowWindow, capture: ScreenCapture) -> Profile:
+ def run_setup(window: WowWindow, capture: ScreenCapture, dry_run: bool = False) -> Profile:
     print("=== Первоначальная настройка ===")
     print("Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.")
     cast_key = input("Клавиша Fishing [0]: ").strip().lower() or "0"
     client = _wait_for_wow(window)
     search = client.inset(0.08, 0.18, 0.16)
     before = [capture.grab(search) for _ in range(6)]
-    sender = SafeInput(window.active, dry_run=False)
-    if not sender.press(cast_key):
+    sender = SafeInput(window.active, dry_run=dry_run)
+    if dry_run:
+        print("DRY RUN: выполните заброс вручную в течение следующих 3 секунд")
+        time.sleep(3.0)
+    elif not sender.press(cast_key):
         raise RuntimeError("Ввод заблокирован: WoW не активно")
     time.sleep(1.25)
     after = []

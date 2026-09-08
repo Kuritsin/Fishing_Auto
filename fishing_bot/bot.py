@@ -11,7 +11,7 @@ from config import Profile, SETTINGS
 from .capture import ScreenCapture
 from .input import SafeInput
 from .tracker import BobberTracker
-from .vision import Detection, match
+from .vision import Detection, loot_window_appeared, match
 from .window import WowWindow
 
 
@@ -85,9 +85,15 @@ class FishingBot:
             self.log.warning("Поклёвка не обнаружена: %s", result.reason)
             return
         self.log.info("Поклёвка: %s drop=%.1f velocity=%.1f", result.reason, result.drop, result.velocity)
+        before_loot = self.capture.grab(client)
         if not self.input.move(result.x, result.y) or not self.input.right_click():
             return
         self.stop_event.wait(SETTINGS.post_loot_delay)
+        if self.safe() and loot_window_appeared(before_loot, self.capture.grab(client)):
+            self.log.warning(
+                "Окно добычи осталось открытым. Проверьте, что Auto Loot включён; "
+                "повторный клик намеренно не выполняется"
+            )
 
     def run(self, once: bool = False) -> None:
         self.log.info("Бот запущен")
