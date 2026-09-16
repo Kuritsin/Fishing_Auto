@@ -8,7 +8,7 @@ from collections.abc import Callable
 from config import Region, Settings
 from .bite import BiteSignalDetector
 from .capture import ScreenCapture
-from .vision import Detection, match
+from .vision import Detection, match_templates
 
 
 @dataclass(frozen=True)
@@ -25,7 +25,7 @@ class BobberTracker:
     def __init__(self, capture: ScreenCapture, settings: Settings) -> None:
         self.capture, self.settings = capture, settings
 
-    def wait(self, initial: Detection, template: np.ndarray, client: Region, timeout: float,
+    def wait(self, initial: Detection, templates: list[np.ndarray], client: Region, timeout: float,
              stop: threading.Event, safe: Callable[[], bool]) -> BiteResult:
         width, height = initial.size
         radius = max(36, max(width, height) * 2)
@@ -34,31 +34,50 @@ class BobberTracker:
             self.settings.bite_drop_height_ratio,
             self.settings.bite_velocity_height_ratio,
             self.settings.bite_confirmation_frames,
+            self.settings.bite_warmup_seconds,
         )
         last, missing = initial, 0
+        lost_since: float | None = None
+        if 0 <= initial.template_index < len(templates):
+            preferred_templates = [templates[initial.template_index]]
+        else:
+            preferred_templates = templates
         deadline = time.monotonic() + timeout
         delay = 1 / self.settings.tracker_fps
 
+        maximum_step = max(15.0, height * 1.0)
         while time.monotonic() < deadline and not stop.is_set() and safe():
             left, top = max(client.left, last.x - radius), max(client.top, last.y - radius)
             right = min(client.left + client.width, last.x + radius)
             bottom = min(client.top + client.height, last.y + radius)
             local = Region(left, top, right - left, bottom - top)
-            current = match(self.capture.grab(local), template, local,
-                            self.settings.match_confidence, (0.9, 1.0, 1.1))
+            frame = self.capture.grab(local)
+            current = match_templates(frame, preferred_templates, local,
+                                      self.settings.tracker_match_confidence,
+                                      (0.9, 1.0, 1.1))
+            if not current.found and missing >= 2 and len(templates) > 1:
+                current = match_templates(frame, templates, local,
+                                          self.settings.tracker_match_confidence,
+                                          (0.9, 1.0, 1.1))
             now = time.monotonic()
-            if current.found:
+            continuous = current.found and (
+                (current.x - last.x) ** 2 + (current.y - last.y) ** 2
+            ) ** 0.5 <= maximum_step
+            if continuous:
                 last, missing = current, 0
+                lost_since = None
                 signal = detector.update(now, current.x, current.y)
             else:
                 missing += 1
+                if lost_since is None:
+                    lost_since = now
                 signal = detector.update(now, None, None)
 
             if signal.detected:
                 return BiteResult(True, last.x, last.y, signal.reason,
                                   signal.drop, signal.velocity)
 
-            if missing >= 5:
+            if lost_since is not None and now - lost_since >= self.settings.tracker_lost_seconds:
                 return BiteResult(False, last.x, last.y, "tracker_lost")
             if stop.wait(delay):
                 break

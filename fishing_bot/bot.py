@@ -48,7 +48,7 @@ class FishingBot:
         confirmations = 0
         while time.monotonic() < deadline and self.safe():
             found = match_templates(self.capture.grab(search), self.templates, search,
-                                    SETTINGS.match_confidence)
+                                    SETTINGS.match_confidence, (1.0,))
             if found.confidence > best.confidence:
                 best = found
             if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
@@ -62,53 +62,65 @@ class FishingBot:
             self.stop_event.wait(0.06)
         return Detection(False, confidence=best.confidence)
 
-    def attempt(self) -> None:
+    def attempt(self) -> bool:
         client = self.window.client_region()
         if not client or not self.safe():
-            return
+            return False
         started = time.monotonic(); deadline = started + SETTINGS.attempt_timeout
         self.log.info("Заброс")
         if not self.input.press(self.profile.cast_key):
-            return
+            return False
         if self.stop_event.wait(SETTINGS.cast_settle_seconds):
-            return
+            return False
         found = self._find(client, min(deadline, time.monotonic() + SETTINGS.find_timeout))
         if not found.found:
             self.log.warning("Поплавок не найден; best=%.3f", found.confidence)
-            return
+            return True
         self.log.info("Поплавок найден за %.2f с: (%d, %d), confidence=%.3f",
                       time.monotonic() - started, found.x, found.y, found.confidence)
         if not self.input.move(found.x, found.y):
-            return
-        # Track with the template whose dimensions best match the accepted result.
-        template = min(self.templates, key=lambda item: abs(item.shape[1] - found.size[0]) +
-                       abs(item.shape[0] - found.size[1]))
-        result = self.tracker.wait(found, template, client,
+            self.log.info("Наведение отменено: WoW больше не активно")
+            return False
+        result = self.tracker.wait(found, self.templates, client,
                                    max(0.0, deadline - time.monotonic()),
                                    self.stop_event, self.safe)
         if not result.detected:
             self.log.warning("Поклёвка не обнаружена: %s", result.reason)
-            return
+            return result.reason not in ("interrupted",)
         self.log.info("Поклёвка: %s drop=%.1f velocity=%.1f", result.reason, result.drop, result.velocity)
         before_loot = self.capture.grab(client)
-        if not self.input.move(result.x, result.y) or not self.input.right_click():
-            return
+        if not self.input.move(result.x, result.y):
+            self.log.info("Клик отменён: WoW больше не активно")
+            return False
+        if not self.input.right_click():
+            self.log.info("Клик отменён проверкой безопасности")
+            return False
+        self.log.info("ПКМ выполнен: (%d, %d)", result.x, result.y)
         self.stop_event.wait(SETTINGS.post_loot_delay)
         if self.safe() and loot_window_appeared(before_loot, self.capture.grab(client)):
             self.log.warning(
                 "Окно добычи осталось открытым. Проверьте, что Auto Loot включён; "
                 "повторный клик намеренно не выполняется"
             )
+        return True
 
     def run(self, once: bool = False) -> None:
         self.log.info("Бот запущен")
+        waiting_logged = False
         while not self.stop_event.is_set():
             if self.paused.is_set() or not self.window.active():
+                if not waiting_logged:
+                    self.log.info("WoW не активно; бот ждёт и не выполняет ввод")
+                    waiting_logged = True
                 self.stop_event.wait(SETTINGS.inactive_delay); continue
+            if waiting_logged:
+                self.log.info("WoW снова активно; работа продолжена")
+                waiting_logged = False
             try:
-                self.attempt()
+                completed = self.attempt()
             except Exception:
                 self.log.exception("Ошибка попытки; бот продолжит работу")
-            if once:
+                completed = True
+            if once and completed:
                 break
             self.stop_event.wait(SETTINGS.retry_delay)

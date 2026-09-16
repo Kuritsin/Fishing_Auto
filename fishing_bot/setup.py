@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from pathlib import Path
+import shutil
 
 import cv2
 
@@ -12,15 +13,18 @@ from .vision import candidate_boxes, extract_object_template, stable_difference
 from .window import WowWindow
 
 
-def _wait_for_wow(window: WowWindow, seconds: float = 30.0) -> Region:
+def _wait_for_wow(window: WowWindow, seconds: float | None = None) -> Region:
+    region = window.client_region()
+    if region:
+        return region
     print("Переключитесь в WoW. Ожидание активного окна...")
-    deadline = time.monotonic() + seconds
-    while time.monotonic() < deadline:
+    deadline = None if seconds is None else time.monotonic() + seconds
+    while deadline is None or time.monotonic() < deadline:
         region = window.client_region()
         if region:
             return region
         time.sleep(0.25)
-    raise RuntimeError("WoW не стало активным за 30 секунд")
+    raise RuntimeError("WoW не стало активным за отведённое время")
 
 
 def _select(frame, boxes: list[tuple[int, int, int, int]]) -> tuple[int, int]:
@@ -51,36 +55,51 @@ def run_setup(window: WowWindow, capture: ScreenCapture, dry_run: bool = False) 
     print("Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.")
     cast_key = input("Клавиша Fishing [0]: ").strip().lower() or "0"
     client = _wait_for_wow(window)
-    search = client.inset(0.08, 0.18, 0.16)
     sender = SafeInput(window.active, dry_run=dry_run)
     radius = max(18, round(min(client.width, client.height) * 0.028))
     data = Path(__file__).resolve().parents[1] / "data"
     data.mkdir(exist_ok=True)
+    pending = data / ".setup_pending"
+    shutil.rmtree(pending, ignore_errors=True)
+    pending.mkdir()
     template_files: list[str] = []
     shapes: list[tuple[int, int]] = []
-    for attempt in range(1, 4):
-        print(f"Тестовый заброс {attempt}/3: не двигайте камерой")
-        before = [capture.grab(search) for _ in range(8)]
-        if dry_run:
-            print("DRY RUN: выполните заброс вручную в течение следующих 3 секунд")
-            time.sleep(3.0)
-        elif not sender.press(cast_key):
-            raise RuntimeError("Ввод заблокирован: WoW не активно")
-        time.sleep(1.25)
-        after = []
-        for _ in range(12):
-            after.append(capture.grab(search)); time.sleep(0.06)
-        mask = stable_difference(before, after)
-        frame = after[-1]
-        x, y = _select(frame, candidate_boxes(mask))
-        template, object_mask = extract_object_template(frame, mask, x, y, radius)
-        relative = f"data/bobber_{attempt}.png"
-        mask_path = data / f"bobber_{attempt}_mask.png"
-        if not cv2.imwrite(str(Path(__file__).resolve().parents[1] / relative), template):
-            raise RuntimeError("Не удалось сохранить шаблон поплавка")
-        cv2.imwrite(str(mask_path), object_mask)
-        template_files.append(relative)
-        shapes.append(template.shape[:2])
+    try:
+        for attempt in range(1, 4):
+            # Selecting the previous bobber activates the OpenCV preview window.
+            # Wait instead of aborting and refresh coordinates in case WoW moved.
+            client = _wait_for_wow(window)
+            search = client.inset(0.08, 0.18, 0.16)
+            print(f"Тестовый заброс {attempt}/3: не двигайте камерой")
+            before = [capture.grab(search) for _ in range(8)]
+            if dry_run:
+                print("DRY RUN: выполните заброс вручную в течение следующих 3 секунд")
+                time.sleep(3.0)
+            elif not sender.press(cast_key):
+                client = _wait_for_wow(window)
+                search = client.inset(0.08, 0.18, 0.16)
+                if not sender.press(cast_key):
+                    raise RuntimeError("Не удалось выполнить тестовый заброс")
+            time.sleep(1.25)
+            after = []
+            for _ in range(12):
+                after.append(capture.grab(search)); time.sleep(0.06)
+            mask = stable_difference(before, after)
+            frame = after[-1]
+            x, y = _select(frame, candidate_boxes(mask))
+            template, object_mask = extract_object_template(frame, mask, x, y, radius)
+            relative = f"data/bobber_{attempt}.png"
+            template_path = pending / f"bobber_{attempt}.png"
+            mask_path = pending / f"bobber_{attempt}_mask.png"
+            if not cv2.imwrite(str(template_path), template) or not cv2.imwrite(
+                    str(mask_path), object_mask):
+                raise RuntimeError("Не удалось сохранить шаблон поплавка")
+            template_files.append(relative)
+            shapes.append(template.shape[:2])
+        for staged in pending.iterdir():
+            staged.replace(data / staged.name)
+    finally:
+        shutil.rmtree(pending, ignore_errors=True)
     median_h = sorted(shape[0] for shape in shapes)[len(shapes) // 2]
     median_w = sorted(shape[1] for shape in shapes)[len(shapes) // 2]
     profile = Profile(cast_key=cast_key, template_file=template_files[0],

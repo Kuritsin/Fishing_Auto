@@ -40,7 +40,6 @@ class Profile:
     def templates(self) -> list[str]:
         return self.template_files or [self.template_file]
 
-
     def save(self, path: Path = PROFILE_PATH) -> None:
         temporary = path.with_suffix(".tmp")
         temporary.write_text(json.dumps(asdict(self), indent=2) + "\n", encoding="utf-8")
@@ -66,10 +65,13 @@ class Settings:
     attempt_timeout: float = 22.0
     tracker_fps: float = 24.0
     match_confidence: float = 0.62
+    tracker_match_confidence: float = 0.52
     strong_match_confidence: float = 0.78
     bite_drop_height_ratio: float = 0.12
     bite_velocity_height_ratio: float = 0.55
     bite_confirmation_frames: int = 2
+    bite_warmup_seconds: float = 1.0
+    tracker_lost_seconds: float = 1.25
     inactive_delay: float = 0.4
     retry_delay: float = 0.7
     post_loot_delay: float = 0.8

@@ -50,6 +50,7 @@ def test_match_templates_selects_the_matching_view():
                              0.8, (1.0,))
     assert result.found
     assert (result.x, result.y) == (150, 239)
+    assert result.template_index == 1
 
 
 def test_detects_new_dark_loot_panel():

@@ -18,25 +18,33 @@ class BiteSignalDetector:
     """Classify a short downward dive independently of colour and resolution."""
 
     def __init__(self, bobber_height: int, drop_ratio: float = 0.12,
-                 velocity_ratio: float = 0.55, confirmations: int = 2) -> None:
+                 velocity_ratio: float = 0.55, confirmations: int = 2,
+                 warmup_seconds: float = 1.0) -> None:
         self.height = max(1, bobber_height)
         self.drop_ratio = drop_ratio
         self.velocity_ratio = velocity_ratio
         self.required_confirmations = confirmations
+        self.warmup_seconds = warmup_seconds
         self.history: deque[tuple[float, int, int]] = deque(maxlen=24)
         self.confirmations = 0
         self.last_drop = self.last_velocity = 0.0
+        self.started_at: float | None = None
 
     def update(self, timestamp: float, x: int | None, y: int | None) -> BiteSignal:
         if x is None or y is None:
-            if self.confirmations and self.last_drop >= self._minimum_drop():
+            warmed_up = self.started_at is not None and timestamp - self.started_at >= self.warmup_seconds
+            if warmed_up and self.confirmations and self.last_drop >= self._minimum_drop():
                 return BiteSignal(True, "submerged_after_drop", self.last_drop,
                                   self.last_velocity)
             self.confirmations = 0
             return BiteSignal(False, "temporarily_lost")
 
+        if self.started_at is None:
+            self.started_at = timestamp
         self.history.append((timestamp, x, y))
         if len(self.history) < 8:
+            return BiteSignal(False, "building_baseline")
+        if timestamp - self.started_at < self.warmup_seconds:
             return BiteSignal(False, "building_baseline")
 
         points = list(self.history)
