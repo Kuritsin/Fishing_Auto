@@ -8,6 +8,9 @@ import numpy as np
 from config import Region
 
 
+VISION_API_VERSION = 2
+
+
 @dataclass(frozen=True)
 class Detection:
     found: bool
@@ -89,6 +92,35 @@ def crop_around(frame: np.ndarray, x: int, y: int, radius: int) -> np.ndarray:
     top, bottom = max(0, y - radius), min(frame.shape[0], y + radius + 1)
     left, right = max(0, x - radius), min(frame.shape[1], x + radius + 1)
     return frame[top:bottom, left:right].copy()
+
+
+def template_from_roi(frame: np.ndarray, change_mask: np.ndarray,
+                      roi: tuple[int, int, int, int]) -> tuple[np.ndarray, np.ndarray,
+                                                               tuple[int, int]]:
+    """Build a stable template from a user-drawn box around the complete bobber."""
+    x, y, width, height = roi
+    if width < 16 or height < 16:
+        raise ValueError("Рамка поплавка слишком мала")
+    crop = frame[y:y + height, x:x + width].copy()
+    mask = change_mask[y:y + height, x:x + width].copy()
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8))
+    mask = cv2.dilate(mask, np.ones((3, 3), np.uint8), iterations=1)
+    foreground = int(np.count_nonzero(mask))
+    minimum = max(50, round(width * height * 0.08))
+    # A tiny mask produces near-perfect matches on random highlights.  The
+    # manually selected full crop is a safer fallback when differencing failed.
+    if foreground < minimum:
+        mask = np.full((height, width), 255, np.uint8)
+    return crop, mask, (width // 2, height // 2)
+
+
+def usable_template(image: np.ndarray, mask: np.ndarray | None) -> bool:
+    if image.size == 0 or min(image.shape[:2]) < 16 or image.shape[0] * image.shape[1] < 400:
+        return False
+    if mask is None:
+        return True
+    minimum = max(50, round(mask.size * 0.08))
+    return mask.shape == image.shape[:2] and np.count_nonzero(mask) >= minimum
 
 
 def extract_object_template(frame: np.ndarray, change_mask: np.ndarray, x: int, y: int,

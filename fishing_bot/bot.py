@@ -9,17 +9,29 @@ import cv2
 import numpy as np
 
 from config import Profile, SETTINGS
+from . import vision
 from .capture import ScreenCapture
 from .input import SafeInput
 from .tracker import BobberTracker
-from .vision import (Detection, TemplateAsset, adaptive_novelty,
-                     loot_window_appeared, match_templates)
 from .window import WowWindow
+
+
+REQUIRED_VISION_API_VERSION = 2
+
+
+def validate_vision_api() -> None:
+    actual = getattr(vision, "VISION_API_VERSION", 0)
+    if actual != REQUIRED_VISION_API_VERSION:
+        raise RuntimeError(
+            "Файлы проекта имеют разные версии (bot.py/vision.py). "
+            "Обновите весь репозиторий целиком, затем удалите каталоги __pycache__."
+        )
 
 
 class FishingBot:
     def __init__(self, profile: Profile, window: WowWindow, capture: ScreenCapture,
                  dry_run: bool = False, debug: bool = False) -> None:
+        validate_vision_api()
         self.profile, self.window, self.capture = profile, window, capture
         self.stop_event, self.paused = threading.Event(), threading.Event()
         self.input = SafeInput(self.safe, dry_run)
@@ -29,7 +41,7 @@ class FishingBot:
         self.debug, self.debug_dir = debug, root / "debug"
         masks = profile.template_mask_files or []
         anchors = profile.template_anchors or []
-        self.templates: list[TemplateAsset] = []
+        self.templates: list[vision.TemplateAsset] = []
         for index, name in enumerate(profile.templates()):
             image = cv2.imread(str(root / name))
             if image is None:
@@ -37,7 +49,10 @@ class FishingBot:
             mask = (cv2.imread(str(root / masks[index]), cv2.IMREAD_GRAYSCALE)
                     if index < len(masks) else None)
             anchor = tuple(anchors[index]) if index < len(anchors) else None
-            self.templates.append(TemplateAsset(image, mask, anchor))
+            if not vision.usable_template(image, mask):
+                self.log.warning("Шаблон %s пропущен: изображение или маска слишком малы", name)
+                continue
+            self.templates.append(vision.TemplateAsset(image, mask, anchor))
         if not self.templates:
             raise RuntimeError("Шаблон поплавка не найден; повторите настройку")
         if not masks or not anchors:
@@ -57,9 +72,8 @@ class FishingBot:
     def stop(self) -> None:
         self.stop_event.set(); self.input.release_modifiers()
 
-
     def _save_find_debug(self, frame: np.ndarray, novelty: np.ndarray,
-                         found: Detection) -> None:
+                         found: vision.Detection) -> None:
         if not self.debug:
             return
         preview = frame.copy()
@@ -78,17 +92,17 @@ class FishingBot:
         cv2.imwrite(str(self.debug_dir / "latest_find.png"), preview)
         cv2.imwrite(str(self.debug_dir / "latest_novelty.png"), novelty)
 
-    def _find(self, search, background: list[np.ndarray], deadline: float) -> Detection:
+    def _find(self, search, background: list[np.ndarray], deadline: float) -> vision.Detection:
         self._debug_search = search
-        best = Detection(False)
-        previous = Detection(False)
+        best = vision.Detection(False)
+        previous = vision.Detection(False)
         confirmations = 0
         last_frame = background[-1]
         last_novelty = np.zeros(last_frame.shape[:2], np.uint8)
         while time.monotonic() < deadline and self.safe():
             last_frame = self.capture.grab(search)
-            last_novelty = adaptive_novelty(background, last_frame)
-            found = match_templates(
+            last_novelty = vision.adaptive_novelty(background, last_frame)
+            found = vision.match_templates(
                 last_frame, self.templates, search, SETTINGS.match_confidence, (1.0,),
                 last_novelty, SETTINGS.minimum_novelty_pixels,
                 SETTINGS.masked_match_confidence,
@@ -109,8 +123,8 @@ class FishingBot:
                 self._save_find_debug(last_frame, last_novelty, found)
                 return found
             self.stop_event.wait(0.06)
-        rejected = Detection(False, best.x, best.y, best.confidence, best.size,
-                             best.template_index, best.box)
+        rejected = vision.Detection(False, best.x, best.y, best.confidence, best.size,
+                                    best.template_index, best.box)
         self._save_find_debug(last_frame, last_novelty, rejected)
         return rejected
 
@@ -165,7 +179,7 @@ class FishingBot:
             return False
         self.log.info("ПКМ выполнен: (%d, %d)", result.x, result.y)
         self.stop_event.wait(SETTINGS.post_loot_delay)
-        if self.safe() and loot_window_appeared(before_loot, self.capture.grab(client)):
+        if self.safe() and vision.loot_window_appeared(before_loot, self.capture.grab(client)):
             self.log.warning(
                 "Окно добычи осталось открытым. Проверьте, что Auto Loot включён; "
                 "повторный клик намеренно не выполняется"

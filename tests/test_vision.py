@@ -2,9 +2,10 @@ import cv2
 import numpy as np
 
 from config import Region
-from fishing_bot.vision import (TemplateAsset, adaptive_novelty, candidate_boxes, extract_object_template,
-                                loot_window_appeared, match, match_templates,
-                                stable_difference)
+from fishing_bot.vision import (TemplateAsset, adaptive_novelty, candidate_boxes,
+                                extract_object_template, loot_window_appeared,
+                                match, match_templates, stable_difference,
+                                template_from_roi, usable_template)
 
 
 def test_template_match_returns_screen_coordinates():
@@ -106,6 +107,26 @@ def test_adaptive_novelty_ignores_existing_static_object():
     novelty = adaptive_novelty(before, current)
     assert not np.any(novelty[10:20, 12:24])
     assert np.any(novelty[35:47, 42:54])
+
+
+def test_roi_template_falls_back_from_a_dangerously_tiny_mask():
+    frame = np.full((80, 90, 3), 100, dtype=np.uint8)
+    frame[25:55, 30:70] = (30, 80, 210)
+    change = np.zeros(frame.shape[:2], dtype=np.uint8)
+    change[38:40, 48:50] = 255
+    crop, mask, anchor = template_from_roi(frame, change, (30, 25, 40, 30))
+    assert crop.shape[:2] == (30, 40)
+    assert np.all(mask == 255)
+    assert anchor == (20, 15)
+    assert usable_template(crop, mask)
+
+
+def test_tiny_template_or_mask_is_not_usable():
+    assert not usable_template(np.zeros((5, 7, 3), dtype=np.uint8), None)
+    image = np.zeros((30, 40, 3), dtype=np.uint8)
+    tiny_mask = np.zeros((30, 40), dtype=np.uint8)
+    tiny_mask[10:12, 10:12] = 255
+    assert not usable_template(image, tiny_mask)
 
 
 def test_detects_new_dark_loot_panel():

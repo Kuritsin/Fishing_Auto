@@ -21,7 +21,7 @@ def test_tracker_tolerates_short_match_loss(monkeypatch):
     def fake_match(*_args, **_kwargs):
         return sequence.pop(0) if sequence else recovered
 
-    monkeypatch.setattr("fishing_bot.tracker.match_templates", fake_match)
+    monkeypatch.setattr("fishing_bot.tracker.vision.match_templates", fake_match)
     settings = Settings(tracker_fps=50, tracker_lost_seconds=0.2,
                         bite_warmup_seconds=2.0)
     result = BobberTracker(BlankCapture(), settings).wait(
@@ -40,7 +40,7 @@ def test_tracker_rejects_an_implausible_single_frame_jump(monkeypatch):
     def fake_match(*_args, **_kwargs):
         return sequence.pop(0) if sequence else stable
 
-    monkeypatch.setattr("fishing_bot.tracker.match_templates", fake_match)
+    monkeypatch.setattr("fishing_bot.tracker.vision.match_templates", fake_match)
     settings = Settings(tracker_fps=50, tracker_lost_seconds=0.2,
                         bite_warmup_seconds=2.0)
     result = BobberTracker(BlankCapture(), settings).wait(

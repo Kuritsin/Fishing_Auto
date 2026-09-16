@@ -6,9 +6,9 @@ import time
 from collections.abc import Callable
 
 from config import Region, Settings
+from . import vision
 from .bite import BiteSignalDetector
 from .capture import ScreenCapture
-from .vision import Detection, TemplateAsset, match_templates
 
 
 @dataclass(frozen=True)
@@ -25,7 +25,8 @@ class BobberTracker:
     def __init__(self, capture: ScreenCapture, settings: Settings) -> None:
         self.capture, self.settings = capture, settings
 
-    def wait(self, initial: Detection, templates: list[TemplateAsset], client: Region, timeout: float,
+    def wait(self, initial: vision.Detection, templates: list[vision.TemplateAsset],
+             client: Region, timeout: float,
              stop: threading.Event, safe: Callable[[], bool]) -> BiteResult:
         width, height = initial.size
         radius = max(36, max(width, height) * 2)
@@ -52,15 +53,17 @@ class BobberTracker:
             bottom = min(client.top + client.height, last.y + radius)
             local = Region(left, top, right - left, bottom - top)
             frame = self.capture.grab(local)
-            current = match_templates(frame, preferred_templates, local,
-                                      self.settings.tracker_match_confidence,
-                                      (0.9, 1.0, 1.1),
-                                      masked_threshold=self.settings.masked_tracker_confidence)
+            current = vision.match_templates(
+                frame, preferred_templates, local, self.settings.tracker_match_confidence,
+                (0.9, 1.0, 1.1),
+                masked_threshold=self.settings.masked_tracker_confidence,
+            )
             if not current.found and missing >= 2 and len(templates) > 1:
-                current = match_templates(frame, templates, local,
-                                          self.settings.tracker_match_confidence,
-                                          (0.9, 1.0, 1.1),
-                                          masked_threshold=self.settings.masked_tracker_confidence)
+                current = vision.match_templates(
+                    frame, templates, local, self.settings.tracker_match_confidence,
+                    (0.9, 1.0, 1.1),
+                    masked_threshold=self.settings.masked_tracker_confidence,
+                )
             now = time.monotonic()
             continuous = current.found and (
                 (current.x - last.x) ** 2 + (current.y - last.y) ** 2
