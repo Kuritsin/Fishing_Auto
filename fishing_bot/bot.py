@@ -6,28 +6,44 @@ import threading
 import time
 
 import cv2
+import numpy as np
 
 from config import Profile, SETTINGS
 from .capture import ScreenCapture
 from .input import SafeInput
 from .tracker import BobberTracker
-from .vision import Detection, loot_window_appeared, match_templates
+from .vision import (Detection, TemplateAsset, adaptive_novelty,
+                     loot_window_appeared, match_templates)
 from .window import WowWindow
 
 
 class FishingBot:
     def __init__(self, profile: Profile, window: WowWindow, capture: ScreenCapture,
-                 dry_run: bool = False) -> None:
+                 dry_run: bool = False, debug: bool = False) -> None:
         self.profile, self.window, self.capture = profile, window, capture
         self.stop_event, self.paused = threading.Event(), threading.Event()
         self.input = SafeInput(self.safe, dry_run)
         self.tracker = BobberTracker(capture, SETTINGS)
         self.log = logging.getLogger(__name__)
         root = Path(__file__).resolve().parents[1]
-        self.templates = [image for name in profile.templates()
-                          if (image := cv2.imread(str(root / name))) is not None]
+        self.debug, self.debug_dir = debug, root / "debug"
+        masks = profile.template_mask_files or []
+        anchors = profile.template_anchors or []
+        self.templates: list[TemplateAsset] = []
+        for index, name in enumerate(profile.templates()):
+            image = cv2.imread(str(root / name))
+            if image is None:
+                continue
+            mask = (cv2.imread(str(root / masks[index]), cv2.IMREAD_GRAYSCALE)
+                    if index < len(masks) else None)
+            anchor = tuple(anchors[index]) if index < len(anchors) else None
+            self.templates.append(TemplateAsset(image, mask, anchor))
         if not self.templates:
             raise RuntimeError("Шаблон поплавка не найден; повторите настройку")
+        if not masks or not anchors:
+            self.log.warning("Профиль создан старой версией; выполните python main.py --setup")
+        if self.debug:
+            self.debug_dir.mkdir(exist_ok=True)
 
     def safe(self) -> bool:
         return not self.stop_event.is_set() and not self.paused.is_set() and self.window.active()
@@ -41,14 +57,42 @@ class FishingBot:
     def stop(self) -> None:
         self.stop_event.set(); self.input.release_modifiers()
 
-    def _find(self, client, deadline: float) -> Detection:
-        search = client.inset(0.08, 0.18, 0.16)
+
+    def _save_find_debug(self, frame: np.ndarray, novelty: np.ndarray,
+                         found: Detection) -> None:
+        if not self.debug:
+            return
+        preview = frame.copy()
+        left, top, width, height = found.box
+        if width and height:
+            search_left = left - self._debug_search.left
+            search_top = top - self._debug_search.top
+            colour = (0, 220, 0) if found.found else (0, 165, 255)
+            cv2.rectangle(preview, (search_left, search_top),
+                          (search_left + width, search_top + height), colour, 2)
+            cv2.circle(preview, (found.x - self._debug_search.left,
+                                 found.y - self._debug_search.top), 6, colour, 2)
+            cv2.putText(preview, f"score={found.confidence:.3f} template={found.template_index + 1}",
+                        (max(0, search_left), max(18, search_top - 6)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.55, colour, 2)
+        cv2.imwrite(str(self.debug_dir / "latest_find.png"), preview)
+        cv2.imwrite(str(self.debug_dir / "latest_novelty.png"), novelty)
+
+    def _find(self, search, background: list[np.ndarray], deadline: float) -> Detection:
+        self._debug_search = search
         best = Detection(False)
         previous = Detection(False)
         confirmations = 0
+        last_frame = background[-1]
+        last_novelty = np.zeros(last_frame.shape[:2], np.uint8)
         while time.monotonic() < deadline and self.safe():
-            found = match_templates(self.capture.grab(search), self.templates, search,
-                                    SETTINGS.match_confidence, (1.0,))
+            last_frame = self.capture.grab(search)
+            last_novelty = adaptive_novelty(background, last_frame)
+            found = match_templates(
+                last_frame, self.templates, search, SETTINGS.match_confidence, (1.0,),
+                last_novelty, SETTINGS.minimum_novelty_pixels,
+                SETTINGS.masked_match_confidence,
+            )
             if found.confidence > best.confidence:
                 best = found
             if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
@@ -56,23 +100,42 @@ class FishingBot:
             else:
                 confirmations = 1 if found.found else 0
             previous = found
-            required = 1 if found.confidence >= SETTINGS.strong_match_confidence else 2
+            masked = (0 <= found.template_index < len(self.templates) and
+                      self.templates[found.template_index].mask is not None)
+            strong_threshold = (SETTINGS.strong_masked_match_confidence if masked else
+                                SETTINGS.strong_match_confidence)
+            required = 1 if found.confidence >= strong_threshold else 2
             if confirmations >= required:
+                self._save_find_debug(last_frame, last_novelty, found)
                 return found
             self.stop_event.wait(0.06)
-        return Detection(False, confidence=best.confidence)
+        rejected = Detection(False, best.x, best.y, best.confidence, best.size,
+                             best.template_index, best.box)
+        self._save_find_debug(last_frame, last_novelty, rejected)
+        return rejected
 
     def attempt(self) -> bool:
         client = self.window.client_region()
         if not client or not self.safe():
             return False
         started = time.monotonic(); deadline = started + SETTINGS.attempt_timeout
+        search = client.inset(0.08, 0.18, 0.16)
+        background = []
+        for _ in range(8):
+            background.append(self.capture.grab(search))
+            if self.stop_event.wait(0.035):
+                return False
         self.log.info("Заброс")
-        if not self.input.press(self.profile.cast_key):
+        if self.input.dry_run:
+            self.log.info("DRY RUN: выполните заброс вручную в течение 3 секунд")
+            if self.stop_event.wait(3.0):
+                return False
+        elif not self.input.press(self.profile.cast_key):
             return False
         if self.stop_event.wait(SETTINGS.cast_settle_seconds):
             return False
-        found = self._find(client, min(deadline, time.monotonic() + SETTINGS.find_timeout))
+        found = self._find(search, background,
+                           min(deadline, time.monotonic() + SETTINGS.find_timeout))
         if not found.found:
             self.log.warning("Поплавок не найден; best=%.3f", found.confidence)
             return True
@@ -89,6 +152,11 @@ class FishingBot:
             return result.reason not in ("interrupted",)
         self.log.info("Поклёвка: %s drop=%.1f velocity=%.1f", result.reason, result.drop, result.velocity)
         before_loot = self.capture.grab(client)
+        if self.debug:
+            preview = before_loot.copy()
+            cv2.circle(preview, (result.x - client.left, result.y - client.top),
+                       8, (0, 0, 255), 2)
+            cv2.imwrite(str(self.debug_dir / "latest_bite.png"), preview)
         if not self.input.move(result.x, result.y):
             self.log.info("Клик отменён: WoW больше не активно")
             return False

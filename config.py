@@ -33,9 +33,11 @@ class Profile:
     stop_key: str = "f10"
     template_file: str = "data/bobber.png"
     template_files: list[str] | None = None
+    template_mask_files: list[str] | None = None
+    template_anchors: list[list[int]] | None = None
     template_width_ratio: float = 0.0
     template_height_ratio: float = 0.0
-    schema_version: int = 2
+    schema_version: int = 3
 
     def templates(self) -> list[str]:
         return self.template_files or [self.template_file]
@@ -50,7 +52,7 @@ class Profile:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             profile = cls(**data)
-            if profile.schema_version not in (1, 2) or not profile.cast_key.strip():
+            if profile.schema_version not in (1, 2, 3) or not profile.cast_key.strip():
                 return None
             return profile
         except (OSError, TypeError, ValueError, json.JSONDecodeError):
@@ -65,8 +67,12 @@ class Settings:
     attempt_timeout: float = 22.0
     tracker_fps: float = 24.0
     match_confidence: float = 0.62
+    masked_match_confidence: float = 0.72
     tracker_match_confidence: float = 0.52
+    masked_tracker_confidence: float = 0.66
     strong_match_confidence: float = 0.78
+    strong_masked_match_confidence: float = 0.86
+    minimum_novelty_pixels: int = 10
     bite_drop_height_ratio: float = 0.12
     bite_velocity_height_ratio: float = 0.55
     bite_confirmation_frames: int = 2

@@ -63,6 +63,8 @@ def run_setup(window: WowWindow, capture: ScreenCapture, dry_run: bool = False) 
     shutil.rmtree(pending, ignore_errors=True)
     pending.mkdir()
     template_files: list[str] = []
+    mask_files: list[str] = []
+    anchors: list[list[int]] = []
     shapes: list[tuple[int, int]] = []
     try:
         for attempt in range(1, 4):
@@ -87,14 +89,17 @@ def run_setup(window: WowWindow, capture: ScreenCapture, dry_run: bool = False) 
             mask = stable_difference(before, after)
             frame = after[-1]
             x, y = _select(frame, candidate_boxes(mask))
-            template, object_mask = extract_object_template(frame, mask, x, y, radius)
+            template, object_mask, anchor = extract_object_template(frame, mask, x, y, radius)
             relative = f"data/bobber_{attempt}.png"
+            mask_relative = f"data/bobber_{attempt}_mask.png"
             template_path = pending / f"bobber_{attempt}.png"
             mask_path = pending / f"bobber_{attempt}_mask.png"
             if not cv2.imwrite(str(template_path), template) or not cv2.imwrite(
                     str(mask_path), object_mask):
                 raise RuntimeError("Не удалось сохранить шаблон поплавка")
             template_files.append(relative)
+            mask_files.append(mask_relative)
+            anchors.append([anchor[0], anchor[1]])
             shapes.append(template.shape[:2])
         for staged in pending.iterdir():
             staged.replace(data / staged.name)
@@ -104,6 +109,8 @@ def run_setup(window: WowWindow, capture: ScreenCapture, dry_run: bool = False) 
     median_w = sorted(shape[1] for shape in shapes)[len(shapes) // 2]
     profile = Profile(cast_key=cast_key, template_file=template_files[0],
                       template_files=template_files,
+                      template_mask_files=mask_files,
+                      template_anchors=anchors,
                       template_width_ratio=median_w / client.width,
                       template_height_ratio=median_h / client.height)
     profile.save(PROFILE_PATH)

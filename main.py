@@ -29,7 +29,7 @@ def main() -> int:
         profile = Profile.load()
         if args.setup or profile is None:
             profile = run_setup(window, capture, args.dry_run)
-        bot = FishingBot(profile, window, capture, args.dry_run)
+        bot = FishingBot(profile, window, capture, args.dry_run, args.debug)
         from pynput import keyboard
         hotkeys = keyboard.GlobalHotKeys({f"<{profile.pause_key}>": bot.toggle_pause,
                                           f"<{profile.stop_key}>": bot.stop})
