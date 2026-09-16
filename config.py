@@ -32,9 +32,14 @@ class Profile:
     pause_key: str = "f8"
     stop_key: str = "f10"
     template_file: str = "data/bobber.png"
+    template_files: list[str] | None = None
     template_width_ratio: float = 0.0
     template_height_ratio: float = 0.0
-    schema_version: int = 1
+    schema_version: int = 2
+
+    def templates(self) -> list[str]:
+        return self.template_files or [self.template_file]
+
 
     def save(self, path: Path = PROFILE_PATH) -> None:
         temporary = path.with_suffix(".tmp")
@@ -46,7 +51,7 @@ class Profile:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
             profile = cls(**data)
-            if profile.schema_version != 1 or not profile.cast_key.strip():
+            if profile.schema_version not in (1, 2) or not profile.cast_key.strip():
                 return None
             return profile
         except (OSError, TypeError, ValueError, json.JSONDecodeError):

@@ -20,3 +20,11 @@ def test_real_video_bite(name, start, end, x, y, expected, tmp_path):
     events = replay(video, start, end, x, y, tmp_path / f"{name}.csv")
     assert len(events) == 1
     assert expected[0] <= events[0] <= expected[1]
+
+
+def test_moving_water_without_bite_does_not_trigger(tmp_path):
+    video = Path("bobber_vid_3.mp4")
+    if not video.exists():
+        pytest.skip("private moving-water regression video is not present")
+    events = replay(video, 3.5, 6.5, 1210, 410, tmp_path / "moving-water.csv")
+    assert events == []

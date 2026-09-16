@@ -11,7 +11,7 @@ from config import Profile, SETTINGS
 from .capture import ScreenCapture
 from .input import SafeInput
 from .tracker import BobberTracker
-from .vision import Detection, loot_window_appeared, match
+from .vision import Detection, loot_window_appeared, match_templates
 from .window import WowWindow
 
 
@@ -23,8 +23,10 @@ class FishingBot:
         self.input = SafeInput(self.safe, dry_run)
         self.tracker = BobberTracker(capture, SETTINGS)
         self.log = logging.getLogger(__name__)
-        self.template = cv2.imread(str(Path(__file__).resolve().parents[1] / profile.template_file))
-        if self.template is None:
+        root = Path(__file__).resolve().parents[1]
+        self.templates = [image for name in profile.templates()
+                          if (image := cv2.imread(str(root / name))) is not None]
+        if not self.templates:
             raise RuntimeError("Шаблон поплавка не найден; повторите настройку")
 
     def safe(self) -> bool:
@@ -45,8 +47,8 @@ class FishingBot:
         previous = Detection(False)
         confirmations = 0
         while time.monotonic() < deadline and self.safe():
-            found = match(self.capture.grab(search), self.template, search,
-                          SETTINGS.match_confidence)
+            found = match_templates(self.capture.grab(search), self.templates, search,
+                                    SETTINGS.match_confidence)
             if found.confidence > best.confidence:
                 best = found
             if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
@@ -78,7 +80,10 @@ class FishingBot:
                       time.monotonic() - started, found.x, found.y, found.confidence)
         if not self.input.move(found.x, found.y):
             return
-        result = self.tracker.wait(found, self.template, client,
+        # Track with the template whose dimensions best match the accepted result.
+        template = min(self.templates, key=lambda item: abs(item.shape[1] - found.size[0]) +
+                       abs(item.shape[0] - found.size[1]))
+        result = self.tracker.wait(found, template, client,
                                    max(0.0, deadline - time.monotonic()),
                                    self.stop_event, self.safe)
         if not result.detected:

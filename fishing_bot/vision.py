@@ -67,6 +67,38 @@ def crop_around(frame: np.ndarray, x: int, y: int, radius: int) -> np.ndarray:
     return frame[top:bottom, left:right].copy()
 
 
+def extract_object_template(frame: np.ndarray, change_mask: np.ndarray, x: int, y: int,
+                            radius: int) -> tuple[np.ndarray, np.ndarray]:
+    """Return a tight bobber crop and mask near a user-confirmed point.
+
+    Thin line pixels and most moving water are deliberately excluded.  The mask
+    is retained for diagnostics and future masked matching; the tight crop alone
+    already makes ordinary template matching substantially less background-led.
+    """
+    height, width = frame.shape[:2]
+    left, right = max(0, x - radius), min(width, x + radius + 1)
+    top, bottom = max(0, y - radius), min(height, y + radius + 1)
+    local = change_mask[top:bottom, left:right].copy()
+    local = cv2.morphologyEx(local, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8))
+    count, labels, stats, centres = cv2.connectedComponentsWithStats(local)
+    selected: list[int] = []
+    local_point = np.array((x - left, y - top), dtype=float)
+    for label in range(1, count):
+        bx, by, bw, bh, area = stats[label]
+        distance = float(np.linalg.norm(centres[label] - local_point))
+        # Reject thread-like components while retaining feathers and body.
+        if area >= 8 and bw >= 3 and distance <= max(12.0, radius * 0.65):
+            selected.append(label)
+    if not selected:
+        fallback = crop_around(frame, x, y, max(12, radius // 2))
+        return fallback, np.full(fallback.shape[:2], 255, np.uint8)
+    object_mask = np.isin(labels, selected).astype(np.uint8) * 255
+    ys, xs = np.nonzero(object_mask)
+    x0, x1 = max(0, int(xs.min()) - 4), min(local.shape[1], int(xs.max()) + 5)
+    y0, y1 = max(0, int(ys.min()) - 4), min(local.shape[0], int(ys.max()) + 5)
+    return frame[top + y0:top + y1, left + x0:left + x1].copy(), object_mask[y0:y1, x0:x1]
+
+
 def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:
     """Detect a newly opened, persistent loot-sized panel in the upper-left."""
     if before.shape != after.shape or before.ndim != 3:
@@ -91,3 +123,4 @@ def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:
         if dark_ratio >= 0.42:
             return True
     return False
+
