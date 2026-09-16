@@ -40,6 +40,7 @@ class Profile:
     def templates(self) -> list[str]:
         return self.template_files or [self.template_file]
 
+
     def save(self, path: Path = PROFILE_PATH) -> None:
         temporary = path.with_suffix(".tmp")
         temporary.write_text(json.dumps(asdict(self), indent=2) + "\n", encoding="utf-8")

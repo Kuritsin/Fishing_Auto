@@ -99,16 +99,6 @@ def extract_object_template(frame: np.ndarray, change_mask: np.ndarray, x: int, 
     return frame[top + y0:top + y1, left + x0:left + x1].copy(), object_mask[y0:y1, x0:x1]
 
 
-def match_templates(frame: np.ndarray, templates: list[np.ndarray], region: Region,
-                    threshold: float, scales: tuple[float, ...] = (0.9, 1.0, 1.1)) -> Detection:
-    best = Detection(False)
-    for template in templates:
-        found = match(frame, template, region, threshold, scales)
-        if found.confidence > best.confidence:
-            best = found
-    return best
-
-
 def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:
     """Detect a newly opened, persistent loot-sized panel in the upper-left."""
     if before.shape != after.shape or before.ndim != 3:
@@ -133,3 +123,4 @@ def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:
         if dark_ratio >= 0.42:
             return True
     return False
+
