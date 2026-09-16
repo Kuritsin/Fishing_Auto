@@ -3,8 +3,9 @@ import numpy as np
 
 from config import Region
 from fishing_bot.vision import (TemplateAsset, adaptive_novelty, candidate_boxes,
+                                color_similarity,
                                 extract_object_template, loot_window_appeared,
-                                match, match_templates, stable_difference,
+                                match, match_template_candidates, match_templates, stable_difference,
                                 template_from_roi, usable_template)
 
 
@@ -127,6 +128,54 @@ def test_tiny_template_or_mask_is_not_usable():
     tiny_mask = np.zeros((30, 40), dtype=np.uint8)
     tiny_mask[10:12, 10:12] = 255
     assert not usable_template(image, tiny_mask)
+
+
+def test_color_similarity_rejects_gray_glare_with_same_luminance():
+    template = np.zeros((24, 30, 3), dtype=np.uint8)
+    cv2.rectangle(template, (3, 7), (14, 17), (20, 20, 220), -1)
+    cv2.rectangle(template, (15, 5), (25, 15), (180, 60, 20), -1)
+    gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    glare = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    mask = np.full(template.shape[:2], 255, dtype=np.uint8)
+    assert color_similarity(template, template, mask) > 0.99
+    assert color_similarity(template, glare, mask) < 0.35
+
+
+def test_color_ranking_prefers_bobber_over_structurally_similar_glare():
+    template = np.zeros((24, 30, 3), dtype=np.uint8)
+    cv2.rectangle(template, (3, 7), (14, 17), (20, 20, 220), -1)
+    cv2.rectangle(template, (15, 5), (25, 15), (180, 60, 20), -1)
+    gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    glare = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    frame = np.zeros((70, 120, 3), dtype=np.uint8)
+    frame[22:46, 8:38] = glare
+    frame[22:46, 72:102] = template
+    novelty = np.zeros(frame.shape[:2], dtype=np.uint8)
+    novelty[22:46, 8:38] = 255
+    novelty[22:46, 72:102] = 255
+    asset = TemplateAsset(template, np.full((24, 30), 255, np.uint8), (15, 12))
+    candidates = match_template_candidates(
+        frame, [asset], Region(0, 0, 120, 70), 0.72, (1.0,), novelty, 10,
+        0.72, 3, 0.28,
+    )
+    assert candidates[0].found
+    assert (candidates[0].x, candidates[0].y) == (87, 34)
+    assert candidates[0].color_score > candidates[1].color_score
+
+
+def test_gray_glare_alone_does_not_confirm_a_cast():
+    template = np.zeros((24, 30, 3), dtype=np.uint8)
+    cv2.rectangle(template, (3, 7), (14, 17), (20, 20, 220), -1)
+    cv2.rectangle(template, (15, 5), (25, 15), (180, 60, 20), -1)
+    glare = cv2.cvtColor(cv2.cvtColor(template, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2BGR)
+    frame = np.zeros((60, 80, 3), dtype=np.uint8)
+    frame[20:44, 25:55] = glare
+    novelty = np.zeros(frame.shape[:2], dtype=np.uint8)
+    novelty[20:44, 25:55] = 255
+    asset = TemplateAsset(template, np.full((24, 30), 255, np.uint8), (15, 12))
+    result = match_templates(frame, [asset], Region(0, 0, 80, 60), 0.72,
+                             (1.0,), novelty, 10, 0.72, 3, 0.28)
+    assert not result.found
 
 
 def test_detects_new_dark_loot_panel():

@@ -8,7 +8,7 @@ import numpy as np
 from config import Region
 
 
-VISION_API_VERSION = 2
+VISION_API_VERSION = 3
 
 
 @dataclass(frozen=True)
@@ -20,6 +20,9 @@ class Detection:
     size: tuple[int, int] = (0, 0)
     template_index: int = -1
     box: tuple[int, int, int, int] = (0, 0, 0, 0)
+    structural_score: float = 0.0
+    color_score: float = 0.0
+    novelty_score: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -123,6 +126,40 @@ def usable_template(image: np.ndarray, mask: np.ndarray | None) -> bool:
     return mask.shape == image.shape[:2] and np.count_nonzero(mask) >= minimum
 
 
+def color_similarity(template: np.ndarray, candidate: np.ndarray,
+                     mask: np.ndarray | None = None) -> float:
+    """Compare chroma while remaining tolerant of global brightness changes."""
+    if template.shape[:2] != candidate.shape[:2]:
+        return 0.0
+    selected = np.ones(template.shape[:2], dtype=bool) if mask is None else mask > 0
+    if np.count_nonzero(selected) < 4:
+        return 0.0
+    template_hsv = cv2.cvtColor(template, cv2.COLOR_BGR2HSV)
+    candidate_hsv = cv2.cvtColor(candidate, cv2.COLOR_BGR2HSV)
+
+    def descriptor(hsv: np.ndarray) -> tuple[np.ndarray, float, float]:
+        hue = hsv[..., 0][selected]
+        saturation = hsv[..., 1][selected].astype(np.float32)
+        weights = saturation / 255.0
+        histogram, _ = np.histogram(hue, bins=12, range=(0, 180), weights=weights)
+        total = float(histogram.sum())
+        if total > 0:
+            histogram = histogram.astype(np.float32) / total
+        return histogram, float(np.mean(saturation >= 55)), float(np.mean(saturation) / 255.0)
+
+    template_hist, template_fraction, template_mean = descriptor(template_hsv)
+    candidate_hist, candidate_fraction, candidate_mean = descriptor(candidate_hsv)
+    if template_fraction < 0.04 and template_mean < 0.12:
+        return 1.0
+    histogram_score = float(np.minimum(template_hist, candidate_hist).sum())
+    fraction_score = max(0.0, 1.0 - abs(template_fraction - candidate_fraction) /
+                         max(0.12, template_fraction))
+    mean_score = max(0.0, 1.0 - abs(template_mean - candidate_mean) /
+                     max(0.15, template_mean))
+    return float(np.clip(histogram_score * 0.60 + fraction_score * 0.25 +
+                         mean_score * 0.15, 0.0, 1.0))
+
+
 def extract_object_template(frame: np.ndarray, change_mask: np.ndarray, x: int, y: int,
                             radius: int) -> tuple[np.ndarray, np.ndarray, tuple[int, int]]:
     """Return a tight bobber crop and mask near a user-confirmed point.
@@ -164,11 +201,12 @@ def extract_object_template(frame: np.ndarray, change_mask: np.ndarray, x: int, 
     return crop, object_mask[y0:y1, x0:x1], anchor
 
 
-def _match_asset(frame: np.ndarray, asset: TemplateAsset, region: Region, threshold: float,
-                 scales: tuple[float, ...], novelty: np.ndarray | None,
-                 minimum_novelty_pixels: int) -> Detection:
+def _match_asset_candidates(frame: np.ndarray, asset: TemplateAsset, region: Region,
+                            threshold: float, scales: tuple[float, ...],
+                            novelty: np.ndarray | None, minimum_novelty_pixels: int,
+                            maximum_candidates: int, color_weight: float) -> list[Detection]:
     source, needle = prepare(frame), prepare(asset.image)
-    best = Detection(False)
+    candidates: list[Detection] = []
     for scale in scales:
         width, height = round(needle.shape[1] * scale), round(needle.shape[0] * scale)
         if min(width, height) < 4 or width > source.shape[1] or height > source.shape[0]:
@@ -200,6 +238,8 @@ def _match_asset(frame: np.ndarray, asset: TemplateAsset, region: Region, thresh
             response = np.divide(numerator, denominator, out=np.full_like(numerator, -1.0),
                                  where=denominator > 1e-6)
             response = np.nan_to_num(response, nan=-1.0, posinf=-1.0, neginf=-1.0)
+        novelty_counts = None
+        novelty_denominator = 1.0
         if novelty is not None:
             novelty_binary = (novelty > 0).astype(np.float32)
             novelty_kernel = ((scaled_mask > 0).astype(np.float32) if scaled_mask is not None
@@ -208,32 +248,79 @@ def _match_asset(frame: np.ndarray, asset: TemplateAsset, region: Region, thresh
             required_novelty = max(minimum_novelty_pixels,
                                    round(np.count_nonzero(novelty_kernel) * 0.08))
             response = np.where(novelty_counts >= required_novelty, response, -1.0)
-        _, score, _, point = cv2.minMaxLoc(response)
-        if score > best.confidence:
+            novelty_denominator = float(max(1, np.count_nonzero(novelty_kernel)))
+        remaining = response.copy()
+        for _ in range(maximum_candidates):
+            _, structural_score, _, point = cv2.minMaxLoc(remaining)
+            if structural_score <= 0:
+                break
+            px, py = point
+            candidate_patch = frame[py:py + height, px:px + width]
+            resized_colour = cv2.resize(asset.image, (width, height), interpolation=cv2.INTER_AREA)
+            chroma_score = color_similarity(resized_colour, candidate_patch, scaled_mask)
+            novelty_score = (float(novelty_counts[py, px]) / novelty_denominator
+                             if novelty_counts is not None else 1.0)
+            combined = float(structural_score)
+            if color_weight > 0:
+                combined *= ((1.0 - color_weight - 0.05) +
+                             color_weight * chroma_score +
+                             0.05 * min(1.0, novelty_score * 4.0))
             anchor_x, anchor_y = asset.click_anchor()
-            screen_x = region.left + point[0] + round(anchor_x * scale)
-            screen_y = region.top + point[1] + round(anchor_y * scale)
-            best = Detection(score >= threshold, screen_x, screen_y, float(score),
-                             (width, height), -1,
-                             (region.left + point[0], region.top + point[1], width, height))
-    return best
+            screen_x = region.left + px + round(anchor_x * scale)
+            screen_y = region.top + py + round(anchor_y * scale)
+            candidates.append(Detection(
+                combined >= threshold, screen_x, screen_y, combined, (width, height), -1,
+                (region.left + px, region.top + py, width, height),
+                float(structural_score), chroma_score, novelty_score,
+            ))
+            suppress_left, suppress_top = max(0, px - width // 2), max(0, py - height // 2)
+            suppress_right = min(remaining.shape[1], px + width // 2 + 1)
+            suppress_bottom = min(remaining.shape[0], py + height // 2 + 1)
+            remaining[suppress_top:suppress_bottom, suppress_left:suppress_right] = -1.0
+    return candidates
+
+
+def match_template_candidates(
+        frame: np.ndarray, templates: list[np.ndarray | TemplateAsset], region: Region,
+        threshold: float, scales: tuple[float, ...] = (0.9, 1.0, 1.1),
+        novelty: np.ndarray | None = None, minimum_novelty_pixels: int = 1,
+        masked_threshold: float | None = None, maximum_candidates: int = 3,
+        color_weight: float = 0.0) -> list[Detection]:
+    ranked: list[Detection] = []
+    for index, template in enumerate(templates):
+        asset = template if isinstance(template, TemplateAsset) else TemplateAsset(template)
+        effective_threshold = (masked_threshold if asset.mask is not None and
+                               masked_threshold is not None else threshold)
+        for found in _match_asset_candidates(
+                frame, asset, region, effective_threshold, scales, novelty,
+                minimum_novelty_pixels, maximum_candidates, color_weight):
+            ranked.append(Detection(
+                found.found, found.x, found.y, found.confidence, found.size, index,
+                found.box, found.structural_score, found.color_score, found.novelty_score,
+            ))
+    ranked.sort(key=lambda item: item.confidence, reverse=True)
+    distinct: list[Detection] = []
+    for candidate in ranked:
+        if any(abs(candidate.x - saved.x) < max(6, candidate.size[0] // 2) and
+               abs(candidate.y - saved.y) < max(6, candidate.size[1] // 2)
+               for saved in distinct):
+            continue
+        distinct.append(candidate)
+        if len(distinct) >= maximum_candidates:
+            break
+    return distinct
 
 
 def match_templates(frame: np.ndarray, templates: list[np.ndarray | TemplateAsset], region: Region,
                     threshold: float, scales: tuple[float, ...] = (0.9, 1.0, 1.1),
                     novelty: np.ndarray | None = None, minimum_novelty_pixels: int = 1,
-                    masked_threshold: float | None = None) -> Detection:
-    best = Detection(False)
-    for index, template in enumerate(templates):
-        asset = template if isinstance(template, TemplateAsset) else TemplateAsset(template)
-        effective_threshold = (masked_threshold if asset.mask is not None and
-                               masked_threshold is not None else threshold)
-        found = _match_asset(frame, asset, region, effective_threshold, scales,
-                             novelty, minimum_novelty_pixels)
-        if found.confidence > best.confidence:
-            best = Detection(found.found, found.x, found.y, found.confidence,
-                             found.size, index, found.box)
-    return best
+                    masked_threshold: float | None = None, maximum_candidates: int = 1,
+                    color_weight: float = 0.0) -> Detection:
+    candidates = match_template_candidates(
+        frame, templates, region, threshold, scales, novelty, minimum_novelty_pixels,
+        masked_threshold, maximum_candidates, color_weight,
+    )
+    return candidates[0] if candidates else Detection(False)
 
 
 def loot_window_appeared(before: np.ndarray, after: np.ndarray) -> bool:

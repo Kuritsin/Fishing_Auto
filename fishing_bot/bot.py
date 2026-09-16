@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import json
 from pathlib import Path
 import threading
 import time
@@ -16,7 +17,7 @@ from .tracker import BobberTracker
 from .window import WowWindow
 
 
-REQUIRED_VISION_API_VERSION = 2
+REQUIRED_VISION_API_VERSION = 3
 
 
 def validate_vision_api() -> None:
@@ -73,24 +74,42 @@ class FishingBot:
         self.stop_event.set(); self.input.release_modifiers()
 
     def _save_find_debug(self, frame: np.ndarray, novelty: np.ndarray,
-                         found: vision.Detection) -> None:
+                         found: vision.Detection,
+                         candidates: list[vision.Detection] | None = None) -> None:
         if not self.debug:
             return
         preview = frame.copy()
-        left, top, width, height = found.box
-        if width and height:
-            search_left = left - self._debug_search.left
-            search_top = top - self._debug_search.top
-            colour = (0, 220, 0) if found.found else (0, 165, 255)
+        candidates = candidates or ([found] if found.box[2] else [])
+        report = []
+        for rank, candidate in enumerate(candidates[:3], 1):
+            left, top, width, height = candidate.box
+            if not width or not height:
+                continue
+            search_left, search_top = left - self._debug_search.left, top - self._debug_search.top
+            colour = ((0, 220, 0) if candidate is found and found.found else
+                      (0, 165, 255) if rank == 1 else (255, 160, 0))
             cv2.rectangle(preview, (search_left, search_top),
                           (search_left + width, search_top + height), colour, 2)
-            cv2.circle(preview, (found.x - self._debug_search.left,
-                                 found.y - self._debug_search.top), 6, colour, 2)
-            cv2.putText(preview, f"score={found.confidence:.3f} template={found.template_index + 1}",
+            cv2.circle(preview, (candidate.x - self._debug_search.left,
+                                 candidate.y - self._debug_search.top), 6, colour, 2)
+            label = (f"#{rank} total={candidate.confidence:.3f} "
+                     f"shape={candidate.structural_score:.3f} "
+                     f"color={candidate.color_score:.2f} t={candidate.template_index + 1}")
+            cv2.putText(preview, label,
                         (max(0, search_left), max(18, search_top - 6)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.55, colour, 2)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.45, colour, 1)
+            report.append({
+                "rank": rank, "accepted": bool(candidate is found and found.found),
+                "total": candidate.confidence, "structural": candidate.structural_score,
+                "color": candidate.color_score, "novelty": candidate.novelty_score,
+                "template": candidate.template_index + 1, "box": candidate.box,
+                "anchor": [candidate.x, candidate.y],
+            })
         cv2.imwrite(str(self.debug_dir / "latest_find.png"), preview)
         cv2.imwrite(str(self.debug_dir / "latest_novelty.png"), novelty)
+        (self.debug_dir / "latest_find.json").write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
 
     def _find(self, search, background: list[np.ndarray], deadline: float) -> vision.Detection:
         self._debug_search = search
@@ -99,14 +118,17 @@ class FishingBot:
         confirmations = 0
         last_frame = background[-1]
         last_novelty = np.zeros(last_frame.shape[:2], np.uint8)
+        last_candidates: list[vision.Detection] = []
         while time.monotonic() < deadline and self.safe():
             last_frame = self.capture.grab(search)
             last_novelty = vision.adaptive_novelty(background, last_frame)
-            found = vision.match_templates(
+            last_candidates = vision.match_template_candidates(
                 last_frame, self.templates, search, SETTINGS.match_confidence, (1.0,),
                 last_novelty, SETTINGS.minimum_novelty_pixels,
-                SETTINGS.masked_match_confidence,
+                SETTINGS.masked_match_confidence, SETTINGS.finder_candidates,
+                SETTINGS.finder_color_weight,
             )
+            found = last_candidates[0] if last_candidates else vision.Detection(False)
             if found.confidence > best.confidence:
                 best = found
             if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
@@ -120,12 +142,12 @@ class FishingBot:
                                 SETTINGS.strong_match_confidence)
             required = 1 if found.confidence >= strong_threshold else 2
             if confirmations >= required:
-                self._save_find_debug(last_frame, last_novelty, found)
+                self._save_find_debug(last_frame, last_novelty, found, last_candidates)
                 return found
             self.stop_event.wait(0.06)
         rejected = vision.Detection(False, best.x, best.y, best.confidence, best.size,
                                     best.template_index, best.box)
-        self._save_find_debug(last_frame, last_novelty, rejected)
+        self._save_find_debug(last_frame, last_novelty, rejected, last_candidates)
         return rejected
 
     def attempt(self) -> bool:
@@ -151,7 +173,8 @@ class FishingBot:
         found = self._find(search, background,
                            min(deadline, time.monotonic() + SETTINGS.find_timeout))
         if not found.found:
-            self.log.warning("Поплавок не найден; best=%.3f", found.confidence)
+            self.log.warning("Заброс не подтверждён: подходящий новый поплавок не найден; best=%.3f",
+                             found.confidence)
             return True
         self.log.info("Поплавок найден за %.2f с: (%d, %d), confidence=%.3f",
                       time.monotonic() - started, found.x, found.y, found.confidence)
