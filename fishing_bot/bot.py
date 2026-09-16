@@ -57,6 +57,7 @@ class FishingBot:
     def stop(self) -> None:
         self.stop_event.set(); self.input.release_modifiers()
 
+
     def _save_find_debug(self, frame: np.ndarray, novelty: np.ndarray,
                          found: Detection) -> None:
         if not self.debug:
