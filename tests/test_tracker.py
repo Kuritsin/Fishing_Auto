@@ -273,3 +273,36 @@ def test_tracker_rejects_a_far_downward_identity_jump(monkeypatch):
     assert not result.detected
     assert result.reason == "tracker_lost"
     assert (result.x, result.y) == (100, 100)
+
+
+def test_tracker_accepts_a_deeper_bite_without_moving_click(monkeypatch):
+    initial = Detection(True, 100, 100, 0.8, (30, 40), 0)
+    stable = Detection(True, 100, 100, 0.8, (30, 40), 0)
+    dive = Detection(True, 108, 150, 0.72, (30, 40), 0)
+    sequence = [stable] * 24 + [dive]
+
+    def fake_match(*_args, **_kwargs):
+        return sequence.pop(0) if sequence else dive
+
+    monkeypatch.setattr(
+        "fishing_bot.tracker.vision.match_templates",
+        fake_match,
+    )
+    settings = Settings(
+        tracker_fps=50,
+        tracker_lost_seconds=0.2,
+        bite_warmup_seconds=0.2,
+    )
+
+    result = BobberTracker(BlankCapture(), settings).wait(
+        initial,
+        [np.zeros((40, 30, 3), dtype=np.uint8)],
+        Region(0, 0, 300, 300),
+        0.8,
+        threading.Event(),
+        lambda: True,
+    )
+
+    assert result.detected
+    assert result.reason == "strong_downward_motion"
+    assert (result.x, result.y) == (100, 100)

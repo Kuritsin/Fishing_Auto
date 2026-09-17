@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import logging
 import threading
 import time
 
@@ -29,6 +30,7 @@ class BobberTracker:
     ) -> None:
         self.capture = capture
         self.settings = settings
+        self.log = logging.getLogger(__name__)
 
     def wait(
         self,
@@ -72,8 +74,8 @@ class BobberTracker:
             height * 1.0,
         )
         maximum_dive_step = max(
-            12.0,
-            height * 0.85,
+            18.0,
+            height * 1.35,
         )
 
         # Keep the click on the last trustworthy surface position.  During a
@@ -165,10 +167,10 @@ class BobberTracker:
                 dy >= max(3.0, height * self.settings.bite_drop_height_ratio)
                 and dy <= maximum_dive_step
                 and abs(dx) <= max(
-                    8.0,
-                    width * 0.35,
+                    10.0,
+                    width * 0.60,
                 )
-                and dy >= abs(dx) * 1.25
+                and dy >= abs(dx) * 0.80
             )
 
             continuous = (
@@ -206,6 +208,22 @@ class BobberTracker:
                     None,
                     None,
                 )
+
+            self.log.debug(
+                "TRACK x=%s y=%s confidence=%.3f dx=%.1f dy=%.1f "
+                "ordinary=%s dive=%s continuous=%s signal=%s drop=%.1f velocity=%.1f",
+                current.x if current.found else None,
+                current.y if current.found else None,
+                current.confidence,
+                dx,
+                dy,
+                ordinary_step,
+                plausible_dive,
+                continuous,
+                signal.reason,
+                signal.drop,
+                signal.velocity,
+            )
 
             if signal.detected:
                 return BiteResult(
