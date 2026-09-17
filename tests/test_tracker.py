@@ -9,43 +9,239 @@ from fishing_bot.vision import Detection
 
 class BlankCapture:
     def grab(self, region):
-        return np.zeros((region.height, region.width, 3), dtype=np.uint8)
+        return np.zeros(
+            (
+                region.height,
+                region.width,
+                3,
+            ),
+            dtype=np.uint8,
+        )
 
 
 def test_tracker_tolerates_short_match_loss(monkeypatch):
-    initial = Detection(True, 100, 100, 0.8, (30, 40), 0)
-    missing = Detection(False, confidence=0.4)
-    recovered = Detection(True, 101, 100, 0.7, (30, 40), 0)
-    sequence = [missing] * 5 + [recovered] * 100
+    initial = Detection(
+        True,
+        100,
+        100,
+        0.8,
+        (30, 40),
+        0,
+    )
+    missing = Detection(
+        False,
+        confidence=0.4,
+    )
+    recovered = Detection(
+        True,
+        101,
+        100,
+        0.7,
+        (30, 40),
+        0,
+    )
+
+    sequence = (
+        [missing] * 5
+        + [recovered] * 100
+    )
 
     def fake_match(*_args, **_kwargs):
-        return sequence.pop(0) if sequence else recovered
+        if sequence:
+            return sequence.pop(0)
 
-    monkeypatch.setattr("fishing_bot.tracker.vision.match_templates", fake_match)
-    settings = Settings(tracker_fps=50, tracker_lost_seconds=0.2,
-                        bite_warmup_seconds=2.0)
-    result = BobberTracker(BlankCapture(), settings).wait(
-        initial, [np.zeros((40, 30, 3), dtype=np.uint8)],
-        Region(0, 0, 300, 300), 0.18, threading.Event(), lambda: True,
+        return recovered
+
+    monkeypatch.setattr(
+        "fishing_bot.tracker.vision.match_templates",
+        fake_match,
     )
+
+    settings = Settings(
+        tracker_fps=50,
+        tracker_lost_seconds=0.2,
+        bite_warmup_seconds=2.0,
+    )
+
+    result = BobberTracker(
+        BlankCapture(),
+        settings,
+    ).wait(
+        initial,
+        [
+            np.zeros(
+                (40, 30, 3),
+                dtype=np.uint8,
+            )
+        ],
+        Region(
+            0,
+            0,
+            300,
+            300,
+        ),
+        0.18,
+        threading.Event(),
+        lambda: True,
+    )
+
     assert result.reason == "timeout"
 
 
-def test_tracker_rejects_an_implausible_single_frame_jump(monkeypatch):
-    initial = Detection(True, 100, 100, 0.8, (30, 40), 0)
-    jumped = Detection(True, 150, 180, 0.9, (30, 40), 0)
-    stable = Detection(True, 100, 100, 0.8, (30, 40), 0)
-    sequence = [jumped, stable] + [stable] * 100
+def test_tracker_rejects_an_implausible_single_frame_jump(
+    monkeypatch,
+):
+    initial = Detection(
+        True,
+        100,
+        100,
+        0.8,
+        (30, 40),
+        0,
+    )
+    jumped = Detection(
+        True,
+        150,
+        180,
+        0.9,
+        (30, 40),
+        0,
+    )
+    stable = Detection(
+        True,
+        100,
+        100,
+        0.8,
+        (30, 40),
+        0,
+    )
+
+    sequence = (
+        [jumped, stable]
+        + [stable] * 100
+    )
 
     def fake_match(*_args, **_kwargs):
-        return sequence.pop(0) if sequence else stable
+        if sequence:
+            return sequence.pop(0)
 
-    monkeypatch.setattr("fishing_bot.tracker.vision.match_templates", fake_match)
-    settings = Settings(tracker_fps=50, tracker_lost_seconds=0.2,
-                        bite_warmup_seconds=2.0)
-    result = BobberTracker(BlankCapture(), settings).wait(
-        initial, [np.zeros((40, 30, 3), dtype=np.uint8)],
-        Region(0, 0, 300, 300), 0.12, threading.Event(), lambda: True,
+        return stable
+
+    monkeypatch.setattr(
+        "fishing_bot.tracker.vision.match_templates",
+        fake_match,
     )
+
+    settings = Settings(
+        tracker_fps=50,
+        tracker_lost_seconds=0.2,
+        bite_warmup_seconds=2.0,
+    )
+
+    result = BobberTracker(
+        BlankCapture(),
+        settings,
+    ).wait(
+        initial,
+        [
+            np.zeros(
+                (40, 30, 3),
+                dtype=np.uint8,
+            )
+        ],
+        Region(
+            0,
+            0,
+            300,
+            300,
+        ),
+        0.12,
+        threading.Event(),
+        lambda: True,
+    )
+
     assert not result.detected
     assert result.reason == "timeout"
+
+
+def test_tracker_passes_a_large_directional_dive_to_detector(
+    monkeypatch,
+):
+    initial = Detection(
+        True,
+        100,
+        100,
+        0.8,
+        (30, 40),
+        0,
+    )
+    stable = Detection(
+        True,
+        100,
+        100,
+        0.8,
+        (30, 40),
+        0,
+    )
+    dive = Detection(
+        True,
+        104,
+        128,
+        0.75,
+        (30, 40),
+        0,
+    )
+
+    sequence = (
+        [stable] * 24
+        + [dive]
+    )
+
+    def fake_match(*_args, **_kwargs):
+        if sequence:
+            return sequence.pop(0)
+
+        return dive
+
+    monkeypatch.setattr(
+        "fishing_bot.tracker.vision.match_templates",
+        fake_match,
+    )
+
+    settings = Settings(
+        tracker_fps=50,
+        tracker_lost_seconds=0.2,
+        bite_warmup_seconds=0.2,
+    )
+
+    result = BobberTracker(
+        BlankCapture(),
+        settings,
+    ).wait(
+        initial,
+        [
+            np.zeros(
+                (40, 30, 3),
+                dtype=np.uint8,
+            )
+        ],
+        Region(
+            0,
+            0,
+            300,
+            300,
+        ),
+        0.8,
+        threading.Event(),
+        lambda: True,
+    )
+
+    assert result.detected
+    assert result.reason == "strong_downward_motion"
+    assert (
+        result.x,
+        result.y,
+    ) == (
+        104,
+        128,
+    )
