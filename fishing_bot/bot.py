@@ -21,6 +21,11 @@ from .window import WowWindow
 REQUIRED_VISION_API_VERSION = 3
 
 
+def remaining_cast_time(cast_started: float, now: float, timeout: float) -> float:
+    """Return the part of the in-game cast which is still available."""
+    return max(0.0, cast_started + timeout - now)
+
+
 def validate_vision_api() -> None:
     actual = getattr(vision, "VISION_API_VERSION", 0)
     if actual != REQUIRED_VISION_API_VERSION:
@@ -155,7 +160,7 @@ class FishingBot:
         client = self.window.client_region()
         if not client or not self.safe():
             return False
-        started = time.monotonic(); deadline = started + SETTINGS.attempt_timeout
+        started = time.monotonic()
         search = client.inset(0.08, 0.18, 0.16)
         background = []
         for _ in range(8):
@@ -163,6 +168,11 @@ class FishingBot:
             if self.stop_event.wait(0.035):
                 return False
         self.log.info("Заброс")
+        # The in-game channel begins with the cast, not when the finder later
+        # discovers the bobber.  Keeping one cast deadline works for TBC and
+        # for shorter expansion versions, where tracker_lost ends it early.
+        cast_started = time.monotonic()
+        deadline = cast_started + SETTINGS.cast_timeout
         if self.input.dry_run:
             self.log.info("DRY RUN: выполните заброс вручную в течение 3 секунд")
             if self.stop_event.wait(3.0):
@@ -186,7 +196,8 @@ class FishingBot:
         # start after it was found; otherwise a slow finder silently shortens
         # the useful bite wait to about 18 seconds.
         result = self.tracker.wait(found, self.templates, client,
-                                   SETTINGS.bite_wait_timeout,
+                                   remaining_cast_time(cast_started, time.monotonic(),
+                                                       SETTINGS.cast_timeout),
                                    self.stop_event, self.safe)
         if not result.detected:
             self.log.warning("Поклёвка не обнаружена: %s", result.reason)
