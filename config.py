@@ -78,6 +78,8 @@ class Settings:
     minimum_novelty_pixels: int = 10
     finder_candidates: int = 4
     finder_color_weight: float = 0.28
+    finder_weak_margin: float = 0.06
+    finder_weak_confirmations: int = 3
     bite_drop_height_ratio: float = 0.12
     bite_velocity_height_ratio: float = 0.55
     bite_confirmation_frames: int = 2

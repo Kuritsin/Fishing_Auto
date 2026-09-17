@@ -137,17 +137,32 @@ class FishingBot:
             found = last_candidates[0] if last_candidates else vision.Detection(False)
             if found.confidence > best.confidence:
                 best = found
-            if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
-                confirmations += 1
-            else:
-                confirmations = 1 if found.found else 0
-            previous = found
             masked = (0 <= found.template_index < len(self.templates) and
                       self.templates[found.template_index].mask is not None)
+            normal_threshold = (SETTINGS.masked_match_confidence if masked else
+                                SETTINGS.match_confidence)
+            weak = found.confidence >= normal_threshold - SETTINGS.finder_weak_margin
+            eligible = found.found or weak
+            previous_eligible = previous.found or previous.confidence >= (
+                normal_threshold - SETTINGS.finder_weak_margin
+            )
+            if eligible and previous_eligible and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
+                confirmations += 1
+            else:
+                confirmations = 1 if eligible else 0
+            previous = found
             strong_threshold = (SETTINGS.strong_masked_match_confidence if masked else
                                 SETTINGS.strong_match_confidence)
-            required = 1 if found.confidence >= strong_threshold else 2
+            required = (1 if found.confidence >= strong_threshold else
+                        2 if found.found else SETTINGS.finder_weak_confirmations)
             if confirmations >= required:
+                if not found.found:
+                    found = vision.Detection(
+                        True, found.x, found.y, found.confidence, found.size,
+                        found.template_index, found.box, found.structural_score,
+                        found.color_score, found.novelty_score,
+                    )
+                    last_candidates[0] = found
                 self._save_find_debug(last_frame, last_novelty, found, last_candidates)
                 return found
             self.stop_event.wait(0.06)

@@ -138,3 +138,22 @@ def test_noisy_water_raises_adaptive_drop_threshold():
         result.detected
         for result in results
     )
+
+
+def test_small_fast_drop_followed_by_disappearance_is_a_bite():
+    detector = BiteSignalDetector(50)
+    feed(detector, [(100, 200)] * 24 + [(101, 204)])
+
+    result = detector.update(1.25, None, None)
+
+    assert result.detected
+    assert result.reason == "submerged_after_small_drop"
+
+
+def test_slow_small_bobbing_before_match_loss_is_not_a_bite():
+    detector = BiteSignalDetector(50)
+    feed(detector, [(100, 200)] * 24 + [(100, 201), (100, 202)])
+
+    result = detector.update(1.30, None, None)
+
+    assert not result.detected
