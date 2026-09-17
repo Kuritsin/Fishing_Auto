@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import logging
 import threading
 import time
 
@@ -29,6 +30,7 @@ class BobberTracker:
     ) -> None:
         self.capture = capture
         self.settings = settings
+        self.log = logging.getLogger(__name__)
 
     def wait(
         self,
@@ -72,9 +74,15 @@ class BobberTracker:
             height * 1.0,
         )
         maximum_dive_step = max(
-            24.0,
-            height * 1.8,
+            18.0,
+            height * 1.35,
         )
+
+        # Keep the click on the last trustworthy surface position.  During a
+        # bite the visible template may collapse onto the line, a reflection,
+        # or another object far below the bobber.  Following that match made
+        # the cursor visibly run down the screen and click the water.
+        click_x, click_y = initial.x, initial.y
 
         while (
             time.monotonic() < deadline
@@ -156,13 +164,13 @@ class BobberTracker:
             # dives before BiteSignalDetector could inspect them. Keep a
             # wider, directional gate while still rejecting sideways jumps.
             plausible_dive = (
-                dy > 0
+                dy >= max(3.0, height * self.settings.bite_drop_height_ratio)
                 and dy <= maximum_dive_step
                 and abs(dx) <= max(
-                    12.0,
-                    height * 0.9,
+                    10.0,
+                    width * 0.60,
                 )
-                and dy >= abs(dx) * 0.55
+                and dy >= abs(dx) * 0.80
             )
 
             continuous = (
@@ -183,6 +191,12 @@ class BobberTracker:
                     current.x,
                     current.y,
                 )
+
+                # Only an ordinary, non-bite observation is allowed to move
+                # the eventual click point.  A directional dive is evidence
+                # for the detector, not a new cursor target.
+                if ordinary_step and not plausible_dive and not signal.detected:
+                    click_x, click_y = current.x, current.y
             else:
                 missing += 1
 
@@ -195,11 +209,27 @@ class BobberTracker:
                     None,
                 )
 
+            self.log.debug(
+                "TRACK x=%s y=%s confidence=%.3f dx=%.1f dy=%.1f "
+                "ordinary=%s dive=%s continuous=%s signal=%s drop=%.1f velocity=%.1f",
+                current.x if current.found else None,
+                current.y if current.found else None,
+                current.confidence,
+                dx,
+                dy,
+                ordinary_step,
+                plausible_dive,
+                continuous,
+                signal.reason,
+                signal.drop,
+                signal.velocity,
+            )
+
             if signal.detected:
                 return BiteResult(
                     True,
-                    last.x,
-                    last.y,
+                    click_x,
+                    click_y,
                     signal.reason,
                     signal.drop,
                     signal.velocity,
