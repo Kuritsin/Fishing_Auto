@@ -72,9 +72,15 @@ class BobberTracker:
             height * 1.0,
         )
         maximum_dive_step = max(
-            24.0,
-            height * 1.8,
+            12.0,
+            height * 0.85,
         )
+
+        # Keep the click on the last trustworthy surface position.  During a
+        # bite the visible template may collapse onto the line, a reflection,
+        # or another object far below the bobber.  Following that match made
+        # the cursor visibly run down the screen and click the water.
+        click_x, click_y = initial.x, initial.y
 
         while (
             time.monotonic() < deadline
@@ -156,13 +162,13 @@ class BobberTracker:
             # dives before BiteSignalDetector could inspect them. Keep a
             # wider, directional gate while still rejecting sideways jumps.
             plausible_dive = (
-                dy > 0
+                dy >= max(3.0, height * self.settings.bite_drop_height_ratio)
                 and dy <= maximum_dive_step
                 and abs(dx) <= max(
-                    12.0,
-                    height * 0.9,
+                    8.0,
+                    width * 0.35,
                 )
-                and dy >= abs(dx) * 0.55
+                and dy >= abs(dx) * 1.25
             )
 
             continuous = (
@@ -183,6 +189,12 @@ class BobberTracker:
                     current.x,
                     current.y,
                 )
+
+                # Only an ordinary, non-bite observation is allowed to move
+                # the eventual click point.  A directional dive is evidence
+                # for the detector, not a new cursor target.
+                if ordinary_step and not plausible_dive and not signal.detected:
+                    click_x, click_y = current.x, current.y
             else:
                 missing += 1
 
@@ -198,8 +210,8 @@ class BobberTracker:
             if signal.detected:
                 return BiteResult(
                     True,
-                    last.x,
-                    last.y,
+                    click_x,
+                    click_y,
                     signal.reason,
                     signal.drop,
                     signal.velocity,
