@@ -1,860 +1,345 @@
-Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.
-Клавиша Fishing [0]:
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 1/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 2/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 3/3: не двигайте камерой
-Три вида поплавка сохранены автоматически. Настройка завершена.
-2026-09-17 17:01:24,319 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:01:24,868 INFO fishing_bot.bot: Заброс
-2026-09-17 17:01:30,077 INFO fishing_bot.bot: Заброс
-2026-09-17 17:01:33,938 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.757
-2026-09-17 17:01:35,129 INFO fishing_bot.bot: Заброс
-2026-09-17 17:01:36,440 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
-2026-09-17 17:01:37,157 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:01:44,794 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:01:44,794 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:01:46,827 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:01:47,372 INFO fishing_bot.bot: Заброс
-2026-09-17 17:01:47,372 INFO fishing_bot.bot: DRY RUN: выполните заброс вручную в течение 3 секунд
-2026-09-17 17:01:52,856 INFO fishing_bot.bot: Поплавок найден за 6.03 с: (823, 490), confidence=0.759
-2026-09-17 17:01:52,856 INFO fishing_bot.input: DRY RUN: move to (823, 490)
-2026-09-17 17:01:54,007 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=18.0 velocity=134.4
-2026-09-17 17:01:54,142 INFO fishing_bot.input: DRY RUN: move to (853, 512)
-2026-09-17 17:01:54,142 INFO fishing_bot.input: DRY RUN: right click
-2026-09-17 17:01:54,142 INFO fishing_bot.bot: ПКМ выполнен: (853, 512)
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --once --debug
-2026-09-17 17:02:29,927 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:02:29,928 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:02:31,543 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:02:32,027 INFO fishing_bot.bot: Заброс
-2026-09-17 17:02:36,143 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.695
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:02:54,231 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:02:54,232 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:02:55,860 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:02:56,359 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:00,289 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.662
-2026-09-17 17:03:01,496 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:05,915 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.700
-2026-09-17 17:03:11,574 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.725
-2026-09-17 17:03:12,789 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:17,123 INFO fishing_bot.bot: Поплавок найден за 4.83 с: (812, 478), confidence=0.820
-2026-09-17 17:03:19,849 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=34.0 velocity=50.7
-2026-09-17 17:03:19,974 INFO fishing_bot.bot: ПКМ выполнен: (818, 510)
-2026-09-17 17:03:22,018 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:26,458 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.742
-2026-09-17 17:03:27,645 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:32,078 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.700
-2026-09-17 17:03:33,279 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:37,276 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.711
-2026-09-17 17:03:38,500 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:41,148 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:03:41,558 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:03:42,117 INFO fishing_bot.bot: Заброс
-2026-09-17 17:03:42,821 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:05:35,295 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:05:35,295 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:05:36,510 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:05:37,056 INFO fishing_bot.bot: Заброс
-2026-09-17 17:05:41,620 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.698
-2026-09-17 17:05:42,881 INFO fishing_bot.bot: Заброс
-2026-09-17 17:05:47,503 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.672
-2026-09-17 17:05:48,746 INFO fishing_bot.bot: Заброс
-2026-09-17 17:05:52,726 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.689
-2026-09-17 17:05:55,916 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.680
-2026-09-17 17:05:56,633 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --setup
-=== Первоначальная настройка ===
-Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.
-Клавиша Fishing [0]:
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 1/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 2/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 3/3: не двигайте камерой
-Три вида поплавка сохранены автоматически. Настройка завершена.
-2026-09-17 17:06:46,332 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:06:46,837 INFO fishing_bot.bot: Заброс
-2026-09-17 17:06:48,154 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --setup
-=== Первоначальная настройка ===
-Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.
-Клавиша Fishing [0]:
-Переключитесь в WoW. Ожидание активного окна...
-Traceback (most recent call last):
-  File "C:\Users\alexe\PycharmProjects\Fishing_Auto\main.py", line 49, in <module>
-    raise SystemExit(main())
-                     ~~~~^^
-  File "C:\Users\alexe\PycharmProjects\Fishing_Auto\main.py", line 31, in main
-    profile = run_setup(window, capture, args.dry_run)
-  File "C:\Users\alexe\PycharmProjects\Fishing_Auto\fishing_bot\setup.py", line 72, in run_setup
-    client = _wait_for_wow(window)
-  File "C:\Users\alexe\PycharmProjects\Fishing_Auto\fishing_bot\setup.py", line 26, in _wait_for_wow
-    time.sleep(0.25)
-    ~~~~~~~~~~^^^^^^
-KeyboardInterrupt
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:06:56,538 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:06:56,538 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:06:58,255 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:02,228 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.719
-2026-09-17 17:07:03,418 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:06,669 INFO fishing_bot.bot: Поплавок найден за 3.73 с: (1008, 372), confidence=0.804
-2026-09-17 17:07:21,861 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:07:23,122 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:27,012 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.674
-2026-09-17 17:07:28,213 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:31,333 INFO fishing_bot.bot: Поплавок найден за 3.61 с: (951, 399), confidence=0.783
-2026-09-17 17:07:44,788 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=7.0 velocity=52.1
-2026-09-17 17:07:44,924 INFO fishing_bot.bot: ПКМ выполнен: (952, 407)
-2026-09-17 17:07:46,974 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:52,627 INFO fishing_bot.bot: Заброс
-2026-09-17 17:07:56,725 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.625
-2026-09-17 17:07:57,976 INFO fishing_bot.bot: Заброс
-2026-09-17 17:08:00,177 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.695
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:08:24,126 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:08:24,127 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:08:24,940 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:08:25,532 INFO fishing_bot.bot: Заброс
-2026-09-17 17:08:29,515 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.660
-2026-09-17 17:08:30,719 INFO fishing_bot.bot: Заброс
-2026-09-17 17:08:34,593 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.654
-2026-09-17 17:08:35,857 INFO fishing_bot.bot: Заброс
-2026-09-17 17:08:40,889 INFO fishing_bot.bot: Заброс
-2026-09-17 17:08:42,893 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.656
-2026-09-17 17:08:43,611 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --setup
-=== Первоначальная настройка ===
-Включите Auto Loot, выключите Click to Move и не двигайте камерой во время теста.
-Клавиша Fishing [0]:
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 1/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 2/3: не двигайте камерой
-Переключитесь в WoW. Ожидание активного окна...
-Тестовый заброс 3/3: не двигайте камерой
-Три вида поплавка сохранены автоматически. Настройка завершена.
-2026-09-17 17:09:19,468 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:09:20,004 INFO fishing_bot.bot: Заброс
-2026-09-17 17:09:21,306 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:09:28,558 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:09:28,558 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:09:29,782 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:09:30,330 INFO fishing_bot.bot: Заброс
-2026-09-17 17:09:32,890 INFO fishing_bot.bot: Поплавок найден за 3.11 с: (972, 411), confidence=0.949
-2026-09-17 17:09:43,746 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:09:44,962 INFO fishing_bot.bot: Заброс
-2026-09-17 17:09:47,851 INFO fishing_bot.bot: Поплавок найден за 3.40 с: (1087, 456), confidence=0.926
-2026-09-17 17:09:58,908 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=78.0 velocity=340.5
-2026-09-17 17:09:59,042 INFO fishing_bot.bot: ПКМ выполнен: (1033, 534)
-2026-09-17 17:10:01,145 INFO fishing_bot.bot: Заброс
-2026-09-17 17:10:03,057 INFO fishing_bot.bot: Поплавок найден за 2.46 с: (1090, 455), confidence=0.881
-2026-09-17 17:10:22,606 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:10:23,826 INFO fishing_bot.bot: Заброс
-2026-09-17 17:10:26,456 INFO fishing_bot.bot: Поплавок найден за 3.15 с: (872, 506), confidence=0.891
-2026-09-17 17:10:45,340 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:10:46,556 INFO fishing_bot.bot: Заброс
-2026-09-17 17:10:49,098 INFO fishing_bot.bot: Поплавок найден за 3.04 с: (793, 475), confidence=0.919
-2026-09-17 17:11:08,101 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:11:09,309 INFO fishing_bot.bot: Заброс
-2026-09-17 17:11:12,459 INFO fishing_bot.bot: Поплавок найден за 3.65 с: (954, 369), confidence=0.828
-2026-09-17 17:11:30,813 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:11:31,997 INFO fishing_bot.bot: Заброс
-2026-09-17 17:11:33,859 INFO fishing_bot.bot: Поплавок найден за 2.33 с: (1043, 416), confidence=0.875
-2026-09-17 17:11:43,181 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=69.0 velocity=464.9
-2026-09-17 17:11:43,300 INFO fishing_bot.bot: ПКМ выполнен: (1056, 486)
-2026-09-17 17:11:45,336 INFO fishing_bot.bot: Заброс
-2026-09-17 17:11:47,197 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (1047, 416), confidence=0.902
-2026-09-17 17:11:54,276 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=39.0 velocity=240.1
-2026-09-17 17:11:54,407 INFO fishing_bot.bot: ПКМ выполнен: (1030, 452)
-2026-09-17 17:11:56,502 INFO fishing_bot.bot: Заброс
-2026-09-17 17:11:58,431 INFO fishing_bot.bot: Поплавок найден за 2.46 с: (1062, 482), confidence=0.880
-2026-09-17 17:12:11,664 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=109.0 velocity=723.3
-2026-09-17 17:12:11,783 INFO fishing_bot.bot: ПКМ выполнен: (1091, 591)
-2026-09-17 17:12:13,841 INFO fishing_bot.bot: Заброс
-2026-09-17 17:12:15,707 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1067, 482), confidence=0.888
-2026-09-17 17:12:18,436 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=203.0 velocity=524.5
-2026-09-17 17:12:18,685 INFO fishing_bot.bot: ПКМ выполнен: (1142, 986)
-2026-09-17 17:12:20,727 INFO fishing_bot.bot: Заброс
-2026-09-17 17:12:23,253 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (939, 408), confidence=0.942
-2026-09-17 17:12:35,894 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=56.0 velocity=370.1
-2026-09-17 17:12:36,004 INFO fishing_bot.bot: ПКМ выполнен: (893, 464)
-2026-09-17 17:12:38,040 INFO fishing_bot.bot: Заброс
-2026-09-17 17:12:39,898 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (940, 409), confidence=0.895
-2026-09-17 17:12:42,366 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=86.5 velocity=395.7
-2026-09-17 17:12:42,476 INFO fishing_bot.bot: ПКМ выполнен: (847, 550)
-2026-09-17 17:12:44,546 INFO fishing_bot.bot: Заброс
-2026-09-17 17:12:47,673 INFO fishing_bot.bot: Поплавок найден за 3.65 с: (927, 351), confidence=0.749
-2026-09-17 17:13:06,089 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:13:07,353 INFO fishing_bot.bot: Заброс
-2026-09-17 17:13:10,656 INFO fishing_bot.bot: Поплавок найден за 3.85 с: (922, 368), confidence=0.794
-2026-09-17 17:13:28,856 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:13:30,068 INFO fishing_bot.bot: Заброс
-2026-09-17 17:13:31,940 INFO fishing_bot.bot: Поплавок найден за 2.37 с: (1037, 480), confidence=0.883
-2026-09-17 17:13:51,573 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:13:52,756 INFO fishing_bot.bot: Заброс
-2026-09-17 17:13:55,288 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (1024, 402), confidence=0.947
-2026-09-17 17:14:05,121 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=72.0 velocity=240.1
-2026-09-17 17:14:05,233 INFO fishing_bot.bot: ПКМ выполнен: (1059, 474)
-2026-09-17 17:14:07,284 INFO fishing_bot.bot: Заброс
-2026-09-17 17:14:09,163 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1024, 402), confidence=0.912
-2026-09-17 17:14:10,526 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:14:11,714 INFO fishing_bot.bot: Заброс
-2026-09-17 17:14:14,310 INFO fishing_bot.bot: Поплавок найден за 3.08 с: (1009, 426), confidence=0.918
-2026-09-17 17:14:33,247 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:14:34,474 INFO fishing_bot.bot: Заброс
-2026-09-17 17:14:37,000 INFO fishing_bot.bot: Поплавок найден за 3.04 с: (889, 417), confidence=0.939
-2026-09-17 17:14:44,657 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=49.0 velocity=317.3
-2026-09-17 17:14:44,765 INFO fishing_bot.bot: ПКМ выполнен: (881, 466)
-2026-09-17 17:14:46,789 INFO fishing_bot.bot: Заброс
-2026-09-17 17:14:49,396 INFO fishing_bot.bot: Поплавок найден за 3.09 с: (933, 457), confidence=0.905
-2026-09-17 17:15:08,374 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:15:09,575 INFO fishing_bot.bot: Заброс
-2026-09-17 17:15:12,073 INFO fishing_bot.bot: Поплавок найден за 2.98 с: (1076, 393), confidence=0.935
-2026-09-17 17:15:20,124 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=81.0 velocity=252.0
-2026-09-17 17:15:20,259 INFO fishing_bot.bot: ПКМ выполнен: (1059, 474)
-2026-09-17 17:15:22,337 INFO fishing_bot.bot: Заброс
-2026-09-17 17:15:24,216 INFO fishing_bot.bot: Поплавок найден за 2.40 с: (790, 450), confidence=0.882
-2026-09-17 17:15:36,402 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=89.0 velocity=676.4
-2026-09-17 17:15:36,517 INFO fishing_bot.bot: ПКМ выполнен: (784, 539)
-2026-09-17 17:15:38,541 INFO fishing_bot.bot: Заброс
-2026-09-17 17:15:40,403 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (792, 450), confidence=0.873
-2026-09-17 17:15:42,708 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=111.0 velocity=156.2
-2026-09-17 17:15:42,863 INFO fishing_bot.bot: ПКМ выполнен: (711, 741)
-2026-09-17 17:15:44,886 INFO fishing_bot.bot: Заброс
-2026-09-17 17:15:46,731 INFO fishing_bot.bot: Поплавок найден за 2.33 с: (1036, 495), confidence=0.871
-2026-09-17 17:15:57,654 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=41.0 velocity=279.4
-2026-09-17 17:15:57,765 INFO fishing_bot.bot: ПКМ выполнен: (1039, 534)
-2026-09-17 17:15:59,824 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:02,939 INFO fishing_bot.bot: Поплавок найден за 3.61 с: (853, 366), confidence=0.835
-2026-09-17 17:16:11,600 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=76.0 velocity=267.7
-2026-09-17 17:16:11,710 INFO fishing_bot.bot: ПКМ выполнен: (898, 443)
-2026-09-17 17:16:13,772 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:16,279 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (841, 491), confidence=0.926
-2026-09-17 17:16:22,538 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=54.2
-2026-09-17 17:16:22,660 INFO fishing_bot.bot: ПКМ выполнен: (843, 500)
-2026-09-17 17:16:24,722 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:27,211 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (885, 401), confidence=0.939
-2026-09-17 17:16:37,606 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=74.0 velocity=484.6
-2026-09-17 17:16:37,716 INFO fishing_bot.bot: ПКМ выполнен: (878, 476)
-2026-09-17 17:16:39,758 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:41,655 INFO fishing_bot.bot: Поплавок найден за 2.39 с: (886, 402), confidence=0.903
-2026-09-17 17:16:46,380 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=60.0 velocity=426.8
-2026-09-17 17:16:46,491 INFO fishing_bot.bot: ПКМ выполнен: (850, 520)
-2026-09-17 17:16:48,547 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:52,398 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.753
-2026-09-17 17:16:53,579 INFO fishing_bot.bot: Заброс
-2026-09-17 17:16:56,060 INFO fishing_bot.bot: Поплавок найден за 2.95 с: (823, 486), confidence=0.919
-2026-09-17 17:17:03,137 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=53.1
-2026-09-17 17:17:03,256 INFO fishing_bot.bot: ПКМ выполнен: (829, 495)
-2026-09-17 17:17:05,328 INFO fishing_bot.bot: Заброс
-2026-09-17 17:17:08,501 INFO fishing_bot.bot: Поплавок найден за 3.69 с: (900, 367), confidence=0.810
-2026-09-17 17:17:17,657 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=90.0 velocity=134.9
-2026-09-17 17:17:17,768 INFO fishing_bot.bot: ПКМ выполнен: (899, 457)
-2026-09-17 17:17:19,828 INFO fishing_bot.bot: Заброс
-2026-09-17 17:17:22,357 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (1103, 398), confidence=0.944
-2026-09-17 17:17:35,189 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=77.0 velocity=574.8
-2026-09-17 17:17:35,301 INFO fishing_bot.bot: ПКМ выполнен: (1059, 474)
-2026-09-17 17:17:37,359 INFO fishing_bot.bot: Заброс
-2026-09-17 17:17:39,235 INFO fishing_bot.bot: Поплавок найден за 2.37 с: (824, 474), confidence=0.874
-2026-09-17 17:17:45,808 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=8.0 velocity=47.0
-2026-09-17 17:17:45,927 INFO fishing_bot.bot: ПКМ выполнен: (832, 482)
-2026-09-17 17:17:47,974 INFO fishing_bot.bot: Заброс
-2026-09-17 17:17:50,486 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (807, 501), confidence=0.862
-2026-09-17 17:18:09,491 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:18:10,687 INFO fishing_bot.bot: Заброс
-2026-09-17 17:18:13,204 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (1011, 460), confidence=0.940
-2026-09-17 17:18:25,584 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=59.8
-2026-09-17 17:18:25,693 INFO fishing_bot.bot: ПКМ выполнен: (1011, 470)
-2026-09-17 17:18:27,762 INFO fishing_bot.bot: Заброс
-2026-09-17 17:18:31,147 INFO fishing_bot.bot: Поплавок найден за 3.91 с: (1083, 351), confidence=0.771
-2026-09-17 17:18:49,288 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:18:50,505 INFO fishing_bot.bot: Заброс
-2026-09-17 17:18:52,387 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1026, 491), confidence=0.871
-2026-09-17 17:19:12,004 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:19:13,228 INFO fishing_bot.bot: Заброс
-2026-09-17 17:19:15,739 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (850, 391), confidence=0.914
-2026-09-17 17:19:24,752 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=76.0 velocity=501.3
-2026-09-17 17:19:24,863 INFO fishing_bot.bot: ПКМ выполнен: (895, 467)
-2026-09-17 17:19:26,924 INFO fishing_bot.bot: Заброс
-2026-09-17 17:19:28,789 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (851, 392), confidence=0.861
-2026-09-17 17:19:30,961 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:19:32,197 INFO fishing_bot.bot: Заброс
-2026-09-17 17:19:34,825 INFO fishing_bot.bot: Поплавок найден за 3.16 с: (1062, 357), confidence=0.786
-2026-09-17 17:19:38,464 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=62.0 velocity=161.6
-2026-09-17 17:19:38,575 INFO fishing_bot.bot: ПКМ выполнен: (1089, 419)
-2026-09-17 17:19:40,615 INFO fishing_bot.bot: Заброс
-2026-09-17 17:19:42,543 INFO fishing_bot.bot: Поплавок найден за 2.43 с: (933, 434), confidence=0.883
-2026-09-17 17:20:02,132 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:20:03,348 INFO fishing_bot.bot: Заброс
-2026-09-17 17:20:05,856 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (1007, 408), confidence=0.930
-2026-09-17 17:20:09,409 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=77.0 velocity=508.3
-2026-09-17 17:20:09,523 INFO fishing_bot.bot: ПКМ выполнен: (1054, 485)
-2026-09-17 17:20:11,554 INFO fishing_bot.bot: Заброс
-2026-09-17 17:20:13,425 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (808, 486), confidence=0.876
-2026-09-17 17:20:25,458 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=8.0 velocity=59.5
-2026-09-17 17:20:25,592 INFO fishing_bot.bot: ПКМ выполнен: (816, 495)
-2026-09-17 17:20:27,665 INFO fishing_bot.bot: Заброс
-2026-09-17 17:20:30,343 INFO fishing_bot.bot: Поплавок найден за 3.19 с: (908, 381), confidence=0.877
-2026-09-17 17:20:44,422 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=78.0 velocity=364.1
-2026-09-17 17:20:44,532 INFO fishing_bot.bot: ПКМ выполнен: (877, 460)
-2026-09-17 17:20:46,535 INFO fishing_bot.bot: Заброс
-2026-09-17 17:20:49,057 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (944, 422), confidence=0.940
-2026-09-17 17:21:08,127 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:21:09,308 INFO fishing_bot.bot: Заброс
-2026-09-17 17:21:12,511 INFO fishing_bot.bot: Поплавок найден за 3.67 с: (974, 358), confidence=0.785
-2026-09-17 17:21:30,856 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:21:32,059 INFO fishing_bot.bot: Заброс
-2026-09-17 17:21:34,568 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (805, 411), confidence=0.940
-2026-09-17 17:21:53,617 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:21:54,807 INFO fishing_bot.bot: Заброс
-2026-09-17 17:21:57,308 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (1020, 397), confidence=0.931
-2026-09-17 17:22:06,962 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=89.0 velocity=595.2
-2026-09-17 17:22:07,071 INFO fishing_bot.bot: ПКМ выполнен: (1054, 486)
-2026-09-17 17:22:09,104 INFO fishing_bot.bot: Заброс
-2026-09-17 17:22:11,623 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (1058, 404), confidence=0.959
-2026-09-17 17:22:17,437 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=89.0 velocity=603.0
-2026-09-17 17:22:17,549 INFO fishing_bot.bot: ПКМ выполнен: (1033, 494)
-2026-09-17 17:22:19,652 INFO fishing_bot.bot: Заброс
-2026-09-17 17:22:22,225 INFO fishing_bot.bot: Поплавок найден за 3.12 с: (1076, 415), confidence=0.949
-2026-09-17 17:22:29,215 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=37.0 velocity=247.3
-2026-09-17 17:22:29,334 INFO fishing_bot.bot: ПКМ выполнен: (1035, 452)
-2026-09-17 17:22:31,378 INFO fishing_bot.bot: Заброс
-2026-09-17 17:22:33,901 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (1084, 441), confidence=0.890
-2026-09-17 17:22:42,597 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=58.2
-2026-09-17 17:22:42,746 INFO fishing_bot.bot: ПКМ выполнен: (1086, 451)
-2026-09-17 17:22:44,843 INFO fishing_bot.bot: Заброс
-2026-09-17 17:22:47,490 INFO fishing_bot.bot: Поплавок найден за 3.18 с: (1001, 398), confidence=0.928
-2026-09-17 17:23:06,312 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:23:07,507 INFO fishing_bot.bot: Заброс
-2026-09-17 17:23:09,362 INFO fishing_bot.bot: Поплавок найден за 2.33 с: (817, 485), confidence=0.874
-2026-09-17 17:23:14,178 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=47.8
-2026-09-17 17:23:14,307 INFO fishing_bot.bot: ПКМ выполнен: (825, 494)
-2026-09-17 17:23:16,336 INFO fishing_bot.bot: Заброс
-2026-09-17 17:23:18,223 INFO fishing_bot.bot: Поплавок найден за 2.37 с: (1039, 464), confidence=0.863
-2026-09-17 17:23:29,267 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=13.0 velocity=73.4
-2026-09-17 17:23:29,379 INFO fishing_bot.bot: ПКМ выполнен: (1043, 475)
-2026-09-17 17:23:31,426 INFO fishing_bot.bot: Заброс
-2026-09-17 17:23:33,960 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (928, 487), confidence=0.935
-2026-09-17 17:23:38,782 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=110.0 velocity=735.5
-2026-09-17 17:23:38,903 INFO fishing_bot.bot: ПКМ выполнен: (959, 599)
-2026-09-17 17:23:40,975 INFO fishing_bot.bot: Заброс
-2026-09-17 17:23:43,530 INFO fishing_bot.bot: Поплавок найден за 3.07 с: (840, 477), confidence=0.933
-2026-09-17 17:24:02,525 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:24:03,737 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:06,244 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (886, 414), confidence=0.934
-2026-09-17 17:24:16,192 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=59.0 velocity=346.7
-2026-09-17 17:24:16,303 INFO fishing_bot.bot: ПКМ выполнен: (882, 473)
-2026-09-17 17:24:18,344 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:20,209 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (888, 415), confidence=0.917
-2026-09-17 17:24:21,412 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=143.5 velocity=158.3
-2026-09-17 17:24:21,525 INFO fishing_bot.bot: ПКМ выполнен: (817, 607)
-2026-09-17 17:24:23,560 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:27,436 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.784
-2026-09-17 17:24:28,698 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:31,192 INFO fishing_bot.bot: Поплавок найден за 3.04 с: (839, 483), confidence=0.906
-2026-09-17 17:24:38,368 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=11.0 velocity=59.9
-2026-09-17 17:24:38,488 INFO fishing_bot.bot: ПКМ выполнен: (840, 494)
-2026-09-17 17:24:40,542 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:43,102 INFO fishing_bot.bot: Поплавок найден за 3.06 с: (1014, 457), confidence=0.917
-2026-09-17 17:24:47,746 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=79.0 velocity=453.7
-2026-09-17 17:24:47,875 INFO fishing_bot.bot: ПКМ выполнен: (1040, 536)
-2026-09-17 17:24:49,966 INFO fishing_bot.bot: Заброс
-2026-09-17 17:24:52,495 INFO fishing_bot.bot: Поплавок найден за 3.06 с: (927, 478), confidence=0.925
-2026-09-17 17:25:00,308 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=10.0 velocity=54.1
-2026-09-17 17:25:00,436 INFO fishing_bot.bot: ПКМ выполнен: (928, 489)
-2026-09-17 17:25:02,476 INFO fishing_bot.bot: Заброс
-2026-09-17 17:25:05,631 INFO fishing_bot.bot: Поплавок найден за 3.64 с: (972, 365), confidence=0.827
-2026-09-17 17:25:24,012 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:25:25,205 INFO fishing_bot.bot: Заброс
-2026-09-17 17:25:28,336 INFO fishing_bot.bot: Поплавок найден за 3.62 с: (993, 376), confidence=0.817
-2026-09-17 17:25:46,717 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:25:47,946 INFO fishing_bot.bot: Заброс
-2026-09-17 17:25:51,165 INFO fishing_bot.bot: Поплавок найден за 3.73 с: (870, 362), confidence=0.824
-2026-09-17 17:26:02,852 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=80.0 velocity=133.4
-2026-09-17 17:26:02,963 INFO fishing_bot.bot: ПКМ выполнен: (898, 443)
-2026-09-17 17:26:05,003 INFO fishing_bot.bot: Заброс
-2026-09-17 17:26:06,875 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (1062, 478), confidence=0.898
-2026-09-17 17:26:26,538 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:26:27,756 INFO fishing_bot.bot: Заброс
-2026-09-17 17:26:30,223 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (1008, 434), confidence=0.932
-2026-09-17 17:26:42,005 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=66.9
-2026-09-17 17:26:42,129 INFO fishing_bot.bot: ПКМ выполнен: (1010, 444)
-2026-09-17 17:26:44,177 INFO fishing_bot.bot: Заброс
-2026-09-17 17:26:47,337 INFO fishing_bot.bot: Поплавок найден за 3.64 с: (883, 361), confidence=0.815
-2026-09-17 17:27:05,731 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:27:06,948 INFO fishing_bot.bot: Заброс
-2026-09-17 17:27:09,463 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (978, 440), confidence=0.943
-2026-09-17 17:27:17,602 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=93.0 velocity=623.2
-2026-09-17 17:27:17,728 INFO fishing_bot.bot: ПКМ выполнен: (1028, 534)
-2026-09-17 17:27:19,778 INFO fishing_bot.bot: Заброс
-2026-09-17 17:27:21,628 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (984, 440), confidence=0.878
-2026-09-17 17:27:23,005 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:27:24,196 INFO fishing_bot.bot: Заброс
-2026-09-17 17:27:26,676 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (874, 414), confidence=0.929
-2026-09-17 17:27:31,980 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=47.0 velocity=156.6
-2026-09-17 17:27:32,089 INFO fishing_bot.bot: ПКМ выполнен: (876, 462)
-2026-09-17 17:27:34,139 INFO fishing_bot.bot: Заброс
-2026-09-17 17:27:36,658 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (834, 403), confidence=0.929
-2026-09-17 17:27:51,947 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=57.0 velocity=382.1
-2026-09-17 17:27:52,059 INFO fishing_bot.bot: ПКМ выполнен: (877, 460)
-2026-09-17 17:27:54,102 INFO fishing_bot.bot: Заброс
-2026-09-17 17:27:56,602 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (810, 479), confidence=0.900
-2026-09-17 17:28:03,519 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=55.0
-2026-09-17 17:28:03,636 INFO fishing_bot.bot: ПКМ выполнен: (812, 488)
-2026-09-17 17:28:05,696 INFO fishing_bot.bot: Заброс
-2026-09-17 17:28:08,199 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (1046, 406), confidence=0.961
-2026-09-17 17:28:18,121 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=79.0 velocity=526.6
-2026-09-17 17:28:18,229 INFO fishing_bot.bot: ПКМ выполнен: (1054, 485)
-2026-09-17 17:28:20,272 INFO fishing_bot.bot: Заброс
-2026-09-17 17:28:22,149 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1047, 407), confidence=0.912
-2026-09-17 17:28:33,167 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=85.0 velocity=563.8
-2026-09-17 17:28:33,278 INFO fishing_bot.bot: ПКМ выполнен: (1055, 486)
-2026-09-17 17:28:35,319 INFO fishing_bot.bot: Заброс
-2026-09-17 17:28:37,171 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (1098, 402), confidence=0.907
-2026-09-17 17:28:38,605 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:28:39,801 INFO fishing_bot.bot: Заброс
-2026-09-17 17:28:42,976 INFO fishing_bot.bot: Поплавок найден за 3.66 с: (837, 369), confidence=0.842
-2026-09-17 17:29:01,392 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:29:02,641 INFO fishing_bot.bot: Заброс
-2026-09-17 17:29:05,344 INFO fishing_bot.bot: Поплавок найден за 3.23 с: (957, 375), confidence=0.867
-2026-09-17 17:29:24,149 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:29:25,363 INFO fishing_bot.bot: Заброс
-2026-09-17 17:29:27,891 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (1040, 423), confidence=0.941
-2026-09-17 17:29:38,408 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=11.0 velocity=60.1
-2026-09-17 17:29:38,517 INFO fishing_bot.bot: ПКМ выполнен: (1042, 434)
-2026-09-17 17:29:40,574 INFO fishing_bot.bot: Заброс
-2026-09-17 17:29:43,086 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (928, 432), confidence=0.925
-2026-09-17 17:30:02,084 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:30:03,262 INFO fishing_bot.bot: Заброс
-2026-09-17 17:30:05,872 INFO fishing_bot.bot: Поплавок найден за 3.08 с: (804, 398), confidence=0.930
-2026-09-17 17:30:24,863 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:30:26,051 INFO fishing_bot.bot: Заброс
-2026-09-17 17:30:28,582 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (880, 398), confidence=0.933
-2026-09-17 17:30:37,160 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=65.0 velocity=502.4
-2026-09-17 17:30:37,268 INFO fishing_bot.bot: ПКМ выполнен: (893, 464)
-2026-09-17 17:30:39,298 INFO fishing_bot.bot: Заброс
-2026-09-17 17:30:41,814 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (865, 382), confidence=0.867
-2026-09-17 17:30:49,754 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=85.0 velocity=566.7
-2026-09-17 17:30:49,863 INFO fishing_bot.bot: ПКМ выполнен: (895, 467)
-2026-09-17 17:30:51,908 INFO fishing_bot.bot: Заброс
-2026-09-17 17:30:54,398 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (1047, 469), confidence=0.945
-2026-09-17 17:31:13,462 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:31:14,665 INFO fishing_bot.bot: Заброс
-2026-09-17 17:31:17,127 INFO fishing_bot.bot: Поплавок найден за 2.96 с: (981, 380), confidence=0.868
-2026-09-17 17:31:36,182 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:31:37,397 INFO fishing_bot.bot: Заброс
-2026-09-17 17:31:39,922 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (843, 412), confidence=0.943
-2026-09-17 17:31:48,722 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=59.0 velocity=203.9
-2026-09-17 17:31:48,832 INFO fishing_bot.bot: ПКМ выполнен: (885, 473)
-2026-09-17 17:31:50,870 INFO fishing_bot.bot: Заброс
-2026-09-17 17:31:52,775 INFO fishing_bot.bot: Поплавок найден за 2.40 с: (844, 412), confidence=0.874
-2026-09-17 17:31:54,179 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:31:55,430 INFO fishing_bot.bot: Заброс
-2026-09-17 17:31:57,352 INFO fishing_bot.bot: Поплавок найден за 2.45 с: (922, 462), confidence=0.866
-2026-09-17 17:32:16,959 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:32:18,134 INFO fishing_bot.bot: Заброс
-2026-09-17 17:32:20,631 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (859, 502), confidence=0.914
-2026-09-17 17:32:39,700 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:32:40,886 INFO fishing_bot.bot: Заброс
-2026-09-17 17:32:42,753 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (940, 454), confidence=0.871
-2026-09-17 17:32:54,884 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=23.0 velocity=183.1
-2026-09-17 17:32:55,008 INFO fishing_bot.bot: ПКМ выполнен: (915, 477)
-2026-09-17 17:32:57,065 INFO fishing_bot.bot: Заброс
-2026-09-17 17:32:59,619 INFO fishing_bot.bot: Поплавок найден за 3.07 с: (925, 399), confidence=0.918
-2026-09-17 17:33:07,058 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=64.0 velocity=145.2
-2026-09-17 17:33:07,167 INFO fishing_bot.bot: ПКМ выполнен: (892, 463)
-2026-09-17 17:33:09,224 INFO fishing_bot.bot: Заброс
-2026-09-17 17:33:11,087 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (925, 399), confidence=0.892
-2026-09-17 17:33:12,495 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:33:13,682 INFO fishing_bot.bot: Заброс
-2026-09-17 17:33:15,589 INFO fishing_bot.bot: Поплавок найден за 2.39 с: (860, 442), confidence=0.905
-2026-09-17 17:33:16,954 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:33:18,189 INFO fishing_bot.bot: Заброс
-2026-09-17 17:33:20,710 INFO fishing_bot.bot: Поплавок найден за 3.04 с: (939, 406), confidence=0.943
-2026-09-17 17:33:39,671 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:33:40,889 INFO fishing_bot.bot: Заброс
-2026-09-17 17:33:43,390 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (926, 385), confidence=0.849
-2026-09-17 17:33:50,800 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=79.0 velocity=178.0
-2026-09-17 17:33:50,928 INFO fishing_bot.bot: ПКМ выполнен: (892, 463)
-2026-09-17 17:33:52,976 INFO fishing_bot.bot: Заброс
-2026-09-17 17:33:54,835 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (926, 384), confidence=0.861
-2026-09-17 17:34:14,516 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:34:15,729 INFO fishing_bot.bot: Заброс
-2026-09-17 17:34:18,286 INFO fishing_bot.bot: Поплавок найден за 3.05 с: (857, 435), confidence=0.943
-2026-09-17 17:34:33,686 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=112.0 velocity=319.6
-2026-09-17 17:34:33,811 INFO fishing_bot.bot: ПКМ выполнен: (832, 547)
-2026-09-17 17:34:35,869 INFO fishing_bot.bot: Заброс
-2026-09-17 17:34:37,747 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (863, 434), confidence=0.864
-2026-09-17 17:34:41,457 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=154.5 velocity=103.7
-2026-09-17 17:34:41,645 INFO fishing_bot.bot: ПКМ выполнен: (881, 814)
-2026-09-17 17:34:43,708 INFO fishing_bot.bot: Заброс
-2026-09-17 17:34:45,578 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1094, 435), confidence=0.870
-2026-09-17 17:34:56,537 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=52.5
-2026-09-17 17:34:56,657 INFO fishing_bot.bot: ПКМ выполнен: (1099, 444)
-2026-09-17 17:34:58,708 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:01,216 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (1094, 419), confidence=0.920
-2026-09-17 17:35:13,068 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=64.0 velocity=391.1
-2026-09-17 17:35:13,180 INFO fishing_bot.bot: ПКМ выполнен: (1054, 484)
-2026-09-17 17:35:15,202 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:17,056 INFO fishing_bot.bot: Поплавок найден за 2.32 с: (1095, 419), confidence=0.912
-2026-09-17 17:35:18,473 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:35:19,681 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:21,563 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (1027, 497), confidence=0.874
-2026-09-17 17:35:22,937 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:35:24,188 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:26,141 INFO fishing_bot.bot: Поплавок найден за 2.49 с: (789, 438), confidence=0.862
-2026-09-17 17:35:31,569 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=105.0 velocity=694.6
-2026-09-17 17:35:33,728 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:35,572 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (792, 438), confidence=0.887
-2026-09-17 17:35:36,941 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:35:38,140 INFO fishing_bot.bot: Заброс
-2026-09-17 17:35:40,008 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (978, 479), confidence=0.886
-2026-09-17 17:35:59,695 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:36:00,926 INFO fishing_bot.bot: Заброс
-2026-09-17 17:36:03,402 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (924, 382), confidence=0.883
-2026-09-17 17:36:22,480 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:36:26,297 INFO fishing_bot.bot: Поплавок найден за 3.10 с: (1012, 497), confidence=0.917
-2026-09-17 17:36:35,665 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=93.0 velocity=236.3
-2026-09-17 17:36:35,785 INFO fishing_bot.bot: ПКМ выполнен: (997, 592)
-2026-09-17 17:36:37,848 INFO fishing_bot.bot: Заброс
-2026-09-17 17:36:40,322 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (1009, 379), confidence=0.875
-2026-09-17 17:36:53,695 WARNING fishing_bot.bot: Поклёвка не обнаружена: interrupted
-2026-09-17 17:36:54,410 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --dry-run --once --debug
-2026-09-17 17:37:17,503 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:37:17,504 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:37:19,118 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:37:19,664 INFO fishing_bot.bot: Заброс
-2026-09-17 17:37:19,665 INFO fishing_bot.bot: DRY RUN: выполните заброс вручную в течение 3 секунд
-2026-09-17 17:37:24,593 INFO fishing_bot.input: DRY RUN: move to (816, 478)
-2026-09-17 17:37:37,301 WARNING fishing_bot.bot: Поклёвка не обнаружена: interrupted
-2026-09-17 17:37:38,019 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --dry-run --once --debug
-2026-09-17 17:37:45,375 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:37:45,376 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:37:47,811 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:37:48,312 INFO fishing_bot.bot: Заброс
-2026-09-17 17:37:48,312 INFO fishing_bot.bot: DRY RUN: выполните заброс вручную в течение 3 секунд
-2026-09-17 17:37:53,260 INFO fishing_bot.bot: Поплавок найден за 5.45 с: (1026, 461), confidence=0.895
-2026-09-17 17:37:53,261 INFO fishing_bot.input: DRY RUN: move to (1026, 461)
-2026-09-17 17:38:08,924 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=74.0 velocity=264.0
-2026-09-17 17:38:09,066 INFO fishing_bot.bot: Клик отменён: WoW больше не активно
-2026-09-17 17:38:09,781 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:38:16,682 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:38:17,206 INFO fishing_bot.bot: Заброс
-2026-09-17 17:38:17,207 INFO fishing_bot.bot: DRY RUN: выполните заброс вручную в течение 3 секунд
-(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py
-2026-09-17 17:38:22,367 INFO fishing_bot.bot: Бот запущен
-2026-09-17 17:38:22,367 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
-2026-09-17 17:38:23,588 INFO fishing_bot.bot: WoW снова активно; работа продолжена
-2026-09-17 17:38:24,087 INFO fishing_bot.bot: Заброс
-2026-09-17 17:38:25,944 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (948, 448), confidence=0.892
-2026-09-17 17:38:45,595 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:38:46,796 INFO fishing_bot.bot: Заброс
-2026-09-17 17:38:50,202 INFO fishing_bot.bot: Поплавок найден за 3.90 с: (800, 376), confidence=0.865
-2026-09-17 17:39:08,309 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:39:09,508 INFO fishing_bot.bot: Заброс
-2026-09-17 17:39:11,995 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (892, 370), confidence=0.840
-2026-09-17 17:39:26,925 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=90.0 velocity=380.3
-2026-09-17 17:39:27,044 INFO fishing_bot.bot: ПКМ выполнен: (878, 460)
-2026-09-17 17:39:29,100 INFO fishing_bot.bot: Заброс
-2026-09-17 17:39:31,612 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (874, 389), confidence=0.903
-2026-09-17 17:39:37,536 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=84.0 velocity=629.0
-2026-09-17 17:39:37,669 INFO fishing_bot.bot: ПКМ выполнен: (885, 474)
-2026-09-17 17:39:39,734 INFO fishing_bot.bot: Заброс
-2026-09-17 17:39:41,593 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (790, 444), confidence=0.879
-2026-09-17 17:39:55,668 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=116.0 velocity=847.0
-2026-09-17 17:39:55,794 INFO fishing_bot.bot: ПКМ выполнен: (781, 560)
-2026-09-17 17:39:57,838 INFO fishing_bot.bot: Заброс
-2026-09-17 17:39:59,690 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (864, 484), confidence=0.868
-2026-09-17 17:40:08,145 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=59.0 velocity=416.7
-2026-09-17 17:40:08,255 INFO fishing_bot.bot: ПКМ выполнен: (855, 543)
-2026-09-17 17:40:10,304 INFO fishing_bot.bot: Заброс
-2026-09-17 17:40:13,463 INFO fishing_bot.bot: Поплавок найден за 3.66 с: (921, 362), confidence=0.800
-2026-09-17 17:40:31,869 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:40:33,075 INFO fishing_bot.bot: Заброс
-2026-09-17 17:40:35,571 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (828, 501), confidence=0.892
-2026-09-17 17:40:40,383 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=75.0 velocity=461.2
-2026-09-17 17:40:40,507 INFO fishing_bot.bot: ПКМ выполнен: (820, 577)
-2026-09-17 17:40:42,589 INFO fishing_bot.bot: Заброс
-2026-09-17 17:40:45,682 INFO fishing_bot.bot: Поплавок найден за 3.61 с: (991, 367), confidence=0.819
-2026-09-17 17:40:51,749 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=86.0 velocity=398.2
-2026-09-17 17:40:51,858 INFO fishing_bot.bot: ПКМ выполнен: (1030, 453)
-2026-09-17 17:40:53,901 INFO fishing_bot.bot: Заброс
-2026-09-17 17:40:55,758 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (879, 459), confidence=0.862
-2026-09-17 17:41:15,426 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:41:16,665 INFO fishing_bot.bot: Заброс
-2026-09-17 17:41:19,224 INFO fishing_bot.bot: Поплавок найден за 3.09 с: (953, 408), confidence=0.940
-2026-09-17 17:41:38,169 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:41:39,377 INFO fishing_bot.bot: Заброс
-2026-09-17 17:41:41,863 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (831, 404), confidence=0.936
-2026-09-17 17:42:00,915 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:42:02,124 INFO fishing_bot.bot: Заброс
-2026-09-17 17:42:04,578 INFO fishing_bot.bot: Поплавок найден за 2.95 с: (958, 401), confidence=0.916
-2026-09-17 17:42:23,650 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:42:24,859 INFO fishing_bot.bot: Заброс
-2026-09-17 17:42:28,005 INFO fishing_bot.bot: Поплавок найден за 3.65 с: (1096, 375), confidence=0.849
-2026-09-17 17:42:46,416 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:42:47,656 INFO fishing_bot.bot: Заброс
-2026-09-17 17:42:50,971 INFO fishing_bot.bot: Поплавок найден за 3.85 с: (873, 373), confidence=0.853
-2026-09-17 17:43:09,150 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:43:10,355 INFO fishing_bot.bot: Заброс
-2026-09-17 17:43:12,853 INFO fishing_bot.bot: Поплавок найден за 3.00 с: (988, 393), confidence=0.923
-2026-09-17 17:43:31,865 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:43:33,063 INFO fishing_bot.bot: Заброс
-2026-09-17 17:43:36,916 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.767
-2026-09-17 17:43:38,132 INFO fishing_bot.bot: Заброс
-2026-09-17 17:43:39,986 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (1003, 506), confidence=0.872
-2026-09-17 17:43:46,959 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=88.0 velocity=542.9
-2026-09-17 17:43:47,083 INFO fishing_bot.bot: ПКМ выполнен: (1001, 594)
-2026-09-17 17:43:49,158 INFO fishing_bot.bot: Заброс
-2026-09-17 17:43:51,069 INFO fishing_bot.bot: Поплавок найден за 2.43 с: (1006, 506), confidence=0.867
-2026-09-17 17:43:53,266 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=169.0 velocity=207.1
-2026-09-17 17:43:53,479 INFO fishing_bot.bot: ПКМ выполнен: (1137, 907)
-2026-09-17 17:43:55,558 INFO fishing_bot.bot: Заброс
-2026-09-17 17:43:58,697 INFO fishing_bot.bot: Поплавок найден за 3.67 с: (910, 363), confidence=0.788
-2026-09-17 17:44:17,098 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:44:18,310 INFO fishing_bot.bot: Заброс
-2026-09-17 17:44:20,793 INFO fishing_bot.bot: Поплавок найден за 2.98 с: (1019, 434), confidence=0.924
-2026-09-17 17:44:25,071 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=98.0 velocity=576.8
-2026-09-17 17:44:25,197 INFO fishing_bot.bot: ПКМ выполнен: (1030, 532)
-2026-09-17 17:44:27,243 INFO fishing_bot.bot: Заброс
-2026-09-17 17:44:29,075 INFO fishing_bot.bot: Поплавок найден за 2.32 с: (1026, 434), confidence=0.898
-2026-09-17 17:44:30,408 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=335.0 velocity=1099.3
-2026-09-17 17:44:30,599 INFO fishing_bot.bot: ПКМ выполнен: (986, 820)
-2026-09-17 17:44:32,640 INFO fishing_bot.bot: Заброс
-2026-09-17 17:44:34,478 INFO fishing_bot.bot: Поплавок найден за 2.32 с: (1089, 436), confidence=0.863
-2026-09-17 17:44:40,583 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=47.0 velocity=225.4
-2026-09-17 17:44:40,693 INFO fishing_bot.bot: ПКМ выполнен: (1052, 484)
-2026-09-17 17:44:42,725 INFO fishing_bot.bot: Заброс
-2026-09-17 17:44:45,835 INFO fishing_bot.bot: Поплавок найден за 3.58 с: (860, 350), confidence=0.779
-2026-09-17 17:44:59,066 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=62.0 velocity=166.0
-2026-09-17 17:44:59,179 INFO fishing_bot.bot: ПКМ выполнен: (820, 412)
-2026-09-17 17:45:01,248 INFO fishing_bot.bot: Заброс
-2026-09-17 17:45:04,351 INFO fishing_bot.bot: Поплавок найден за 3.62 с: (829, 363), confidence=0.820
-2026-09-17 17:45:22,777 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:45:23,975 INFO fishing_bot.bot: Заброс
-2026-09-17 17:45:25,799 INFO fishing_bot.bot: Поплавок найден за 2.31 с: (1057, 444), confidence=0.866
-2026-09-17 17:45:45,504 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:45:46,721 INFO fishing_bot.bot: Заброс
-2026-09-17 17:45:48,557 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (874, 461), confidence=0.882
-2026-09-17 17:46:08,237 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:46:09,434 INFO fishing_bot.bot: Заброс
-2026-09-17 17:46:11,932 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (966, 385), confidence=0.893
-2026-09-17 17:46:24,891 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=95.0 velocity=636.2
-2026-09-17 17:46:25,003 INFO fishing_bot.bot: ПКМ выполнен: (925, 480)
-2026-09-17 17:46:27,019 INFO fishing_bot.bot: Заброс
-2026-09-17 17:46:29,509 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (832, 388), confidence=0.894
-2026-09-17 17:46:33,950 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=91.0 velocity=538.4
-2026-09-17 17:46:34,061 INFO fishing_bot.bot: ПКМ выполнен: (865, 479)
-2026-09-17 17:46:36,096 INFO fishing_bot.bot: Заброс
-2026-09-17 17:46:38,605 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (925, 438), confidence=0.918
-2026-09-17 17:46:57,603 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:46:58,854 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:01,503 INFO fishing_bot.bot: Поплавок найден за 3.20 с: (1082, 508), confidence=0.887
-2026-09-17 17:47:09,438 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=83.0 velocity=488.6
-2026-09-17 17:47:09,557 INFO fishing_bot.bot: ПКМ выполнен: (996, 592)
-2026-09-17 17:47:11,582 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:13,447 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (1082, 509), confidence=0.891
-2026-09-17 17:47:14,991 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=225.5 velocity=163.9
-2026-09-17 17:47:15,228 INFO fishing_bot.bot: ПКМ выполнен: (1126, 970)
-2026-09-17 17:47:17,263 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:19,117 INFO fishing_bot.bot: Поплавок найден за 2.33 с: (843, 468), confidence=0.883
-2026-09-17 17:47:26,536 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=52.0 velocity=310.5
-2026-09-17 17:47:26,659 INFO fishing_bot.bot: ПКМ выполнен: (850, 519)
-2026-09-17 17:47:28,718 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:31,184 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (831, 396), confidence=0.928
-2026-09-17 17:47:41,475 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=83.0 velocity=379.5
-2026-09-17 17:47:41,587 INFO fishing_bot.bot: ПКМ выполнен: (876, 479)
-2026-09-17 17:47:43,635 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:45,504 INFO fishing_bot.bot: Поплавок найден за 2.37 с: (838, 400), confidence=0.860
-2026-09-17 17:47:52,536 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=73.0 velocity=196.1
-2026-09-17 17:47:52,646 INFO fishing_bot.bot: ПКМ выполнен: (884, 474)
-2026-09-17 17:47:54,705 INFO fishing_bot.bot: Заброс
-2026-09-17 17:47:56,546 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (842, 400), confidence=0.896
-2026-09-17 17:47:58,807 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=85.5 velocity=28.6
-2026-09-17 17:47:58,918 INFO fishing_bot.bot: ПКМ выполнен: (837, 551)
-2026-09-17 17:48:00,961 INFO fishing_bot.bot: Заброс
-2026-09-17 17:48:04,874 INFO fishing_bot.bot: Поплавок найден за 4.40 с: (994, 350), confidence=0.742
-2026-09-17 17:48:22,527 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:48:23,742 INFO fishing_bot.bot: Заброс
-2026-09-17 17:48:26,196 INFO fishing_bot.bot: Поплавок найден за 2.95 с: (1041, 377), confidence=0.865
-2026-09-17 17:48:29,918 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=69.0 velocity=461.4
-2026-09-17 17:48:30,031 INFO fishing_bot.bot: ПКМ выполнен: (1062, 446)
-2026-09-17 17:48:32,099 INFO fishing_bot.bot: Заброс
-2026-09-17 17:48:34,596 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (1052, 382), confidence=0.899
-2026-09-17 17:48:45,965 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=36.0 velocity=170.6
-2026-09-17 17:48:46,075 INFO fishing_bot.bot: ПКМ выполнен: (1089, 419)
-2026-09-17 17:48:48,146 INFO fishing_bot.bot: Заброс
-2026-09-17 17:48:50,599 INFO fishing_bot.bot: Поплавок найден за 2.98 с: (1029, 393), confidence=0.914
-2026-09-17 17:49:09,619 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:49:10,853 INFO fishing_bot.bot: Заброс
-2026-09-17 17:49:13,338 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (1093, 404), confidence=0.939
-2026-09-17 17:49:26,801 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=79.0 velocity=359.7
-2026-09-17 17:49:26,914 INFO fishing_bot.bot: ПКМ выполнен: (1054, 484)
-2026-09-17 17:49:28,931 INFO fishing_bot.bot: Заброс
-2026-09-17 17:49:30,793 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (1094, 405), confidence=0.883
-2026-09-17 17:49:50,494 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:49:51,679 INFO fishing_bot.bot: Заброс
-2026-09-17 17:49:54,221 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (910, 501), confidence=0.915
-2026-09-17 17:50:13,223 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:50:14,412 INFO fishing_bot.bot: Заброс
-2026-09-17 17:50:16,881 INFO fishing_bot.bot: Поплавок найден за 2.95 с: (811, 437), confidence=0.914
-2026-09-17 17:50:24,619 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=93.0 velocity=688.0
-2026-09-17 17:50:24,729 INFO fishing_bot.bot: ПКМ выполнен: (798, 530)
-2026-09-17 17:50:26,787 INFO fishing_bot.bot: Заброс
-2026-09-17 17:50:28,636 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (817, 437), confidence=0.902
-2026-09-17 17:50:30,191 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=143.0 velocity=871.3
-2026-09-17 17:50:30,299 INFO fishing_bot.bot: ПКМ выполнен: (816, 607)
-2026-09-17 17:50:32,341 INFO fishing_bot.bot: Заброс
-2026-09-17 17:50:35,442 INFO fishing_bot.bot: Поплавок найден за 3.60 с: (1072, 348), confidence=0.764
-2026-09-17 17:50:53,870 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:50:55,055 INFO fishing_bot.bot: Заброс
-2026-09-17 17:50:56,911 INFO fishing_bot.bot: Поплавок найден за 2.32 с: (1076, 462), confidence=0.880
-2026-09-17 17:51:07,998 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=100.0 velocity=421.2
-2026-09-17 17:51:08,117 INFO fishing_bot.bot: ПКМ выполнен: (1131, 562)
-2026-09-17 17:51:10,172 INFO fishing_bot.bot: Заброс
-2026-09-17 17:51:12,018 INFO fishing_bot.bot: Поплавок найден за 2.35 с: (1080, 462), confidence=0.896
-2026-09-17 17:51:15,626 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:51:16,853 INFO fishing_bot.bot: Заброс
-2026-09-17 17:51:18,721 INFO fishing_bot.bot: Поплавок найден за 2.38 с: (838, 490), confidence=0.880
-2026-09-17 17:51:38,345 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:51:39,558 INFO fishing_bot.bot: Заброс
-2026-09-17 17:51:42,033 INFO fishing_bot.bot: Поплавок найден за 2.98 с: (1062, 362), confidence=0.787
-2026-09-17 17:51:46,157 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=83.0 velocity=546.8
-2026-09-17 17:51:46,268 INFO fishing_bot.bot: ПКМ выполнен: (1062, 446)
-2026-09-17 17:51:48,310 INFO fishing_bot.bot: Заброс
-2026-09-17 17:51:50,805 INFO fishing_bot.bot: Поплавок найден за 2.98 с: (1048, 387), confidence=0.910
-2026-09-17 17:51:53,847 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=86.0 velocity=390.2
-2026-09-17 17:51:53,957 INFO fishing_bot.bot: ПКМ выполнен: (1057, 473)
-2026-09-17 17:51:56,002 INFO fishing_bot.bot: Заброс
-2026-09-17 17:51:58,611 INFO fishing_bot.bot: Поплавок найден за 3.11 с: (911, 500), confidence=0.913
-2026-09-17 17:52:17,504 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:52:18,742 INFO fishing_bot.bot: Заброс
-2026-09-17 17:52:21,345 INFO fishing_bot.bot: Поплавок найден за 3.13 с: (1036, 458), confidence=0.933
-2026-09-17 17:52:40,218 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:52:41,423 INFO fishing_bot.bot: Заброс
-2026-09-17 17:52:44,534 INFO fishing_bot.bot: Поплавок найден за 3.60 с: (808, 354), confidence=0.790
-2026-09-17 17:53:02,948 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:53:04,145 INFO fishing_bot.bot: Заброс
-2026-09-17 17:53:06,579 INFO fishing_bot.bot: Поплавок найден за 2.92 с: (889, 486), confidence=0.931
-2026-09-17 17:53:25,695 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:53:26,914 INFO fishing_bot.bot: Заброс
-2026-09-17 17:53:29,381 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (1002, 399), confidence=0.939
-2026-09-17 17:53:48,418 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:53:49,654 INFO fishing_bot.bot: Заброс
-2026-09-17 17:53:52,150 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (796, 479), confidence=0.908
-2026-09-17 17:54:11,156 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:54:12,343 INFO fishing_bot.bot: Заброс
-2026-09-17 17:54:14,825 INFO fishing_bot.bot: Поплавок найден за 2.96 с: (894, 403), confidence=0.920
-2026-09-17 17:54:29,117 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=39.0 velocity=264.7
-2026-09-17 17:54:29,237 INFO fishing_bot.bot: ПКМ выполнен: (898, 443)
-2026-09-17 17:54:31,277 INFO fishing_bot.bot: Заброс
-2026-09-17 17:54:33,808 INFO fishing_bot.bot: Поплавок найден за 3.03 с: (867, 448), confidence=0.910
-2026-09-17 17:54:52,818 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:54:54,019 INFO fishing_bot.bot: Заброс
-2026-09-17 17:54:56,535 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (1003, 362), confidence=0.809
-2026-09-17 17:55:03,096 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=88.0 velocity=586.4
-2026-09-17 17:55:03,207 INFO fishing_bot.bot: ПКМ выполнен: (1026, 451)
-2026-09-17 17:55:05,214 INFO fishing_bot.bot: Заброс
-2026-09-17 17:55:07,066 INFO fishing_bot.bot: Поплавок найден за 2.32 с: (848, 461), confidence=0.863
-2026-09-17 17:55:12,122 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=69.0 velocity=308.1
-2026-09-17 17:55:12,230 INFO fishing_bot.bot: ПКМ выполнен: (798, 530)
-2026-09-17 17:55:14,252 INFO fishing_bot.bot: Заброс
-2026-09-17 17:55:16,125 INFO fishing_bot.bot: Поплавок найден за 2.36 с: (848, 461), confidence=0.904
-2026-09-17 17:55:17,515 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:55:18,710 INFO fishing_bot.bot: Заброс
-2026-09-17 17:55:21,213 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (911, 397), confidence=0.930
-2026-09-17 17:55:35,959 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=69.0 velocity=523.9
-2026-09-17 17:55:36,068 INFO fishing_bot.bot: ПКМ выполнен: (892, 467)
-2026-09-17 17:55:38,112 INFO fishing_bot.bot: Заброс
-2026-09-17 17:55:41,224 INFO fishing_bot.bot: Поплавок найден за 3.61 с: (992, 367), confidence=0.823
-2026-09-17 17:55:59,643 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:56:00,845 INFO fishing_bot.bot: Заброс
-2026-09-17 17:56:03,371 INFO fishing_bot.bot: Поплавок найден за 3.01 с: (885, 399), confidence=0.921
-2026-09-17 17:56:06,970 INFO fishing_bot.bot: Поклёвка: rapid_downward_motion drop=63.0 velocity=417.3
-2026-09-17 17:56:07,079 INFO fishing_bot.bot: ПКМ выполнен: (878, 462)
-2026-09-17 17:56:09,104 INFO fishing_bot.bot: Заброс
-2026-09-17 17:56:10,956 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (885, 400), confidence=0.863
-2026-09-17 17:56:12,358 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:56:13,556 INFO fishing_bot.bot: Заброс
-2026-09-17 17:56:16,044 INFO fishing_bot.bot: Поплавок найден за 2.97 с: (1087, 388), confidence=0.891
-2026-09-17 17:56:30,944 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=8.0 velocity=29.6
-2026-09-17 17:56:31,074 INFO fishing_bot.bot: ПКМ выполнен: (1088, 397)
-2026-09-17 17:56:33,193 INFO fishing_bot.bot: Заброс
-2026-09-17 17:56:35,710 INFO fishing_bot.bot: Поплавок найден за 3.08 с: (1061, 365), confidence=0.804
-2026-09-17 17:56:43,468 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=53.0 velocity=129.9
-2026-09-17 17:56:43,578 INFO fishing_bot.bot: ПКМ выполнен: (1089, 419)
-2026-09-17 17:56:45,622 INFO fishing_bot.bot: Заброс
-2026-09-17 17:56:48,741 INFO fishing_bot.bot: Поплавок найден за 3.60 с: (845, 366), confidence=0.817
-2026-09-17 17:57:03,035 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=92.0 velocity=424.9
-2026-09-17 17:57:03,145 INFO fishing_bot.bot: ПКМ выполнен: (873, 459)
-2026-09-17 17:57:05,177 INFO fishing_bot.bot: Заброс
-2026-09-17 17:57:07,670 INFO fishing_bot.bot: Поплавок найден за 2.99 с: (1028, 431), confidence=0.918
-2026-09-17 17:57:26,734 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:57:27,941 INFO fishing_bot.bot: Заброс
-2026-09-17 17:57:30,457 INFO fishing_bot.bot: Поплавок найден за 3.02 с: (1015, 452), confidence=0.898
-2026-09-17 17:57:49,484 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:57:50,679 INFO fishing_bot.bot: Заброс
-2026-09-17 17:57:55,118 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.761
-2026-09-17 17:57:56,292 INFO fishing_bot.bot: Заброс
-2026-09-17 17:57:58,157 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (973, 495), confidence=0.872
-2026-09-17 17:58:17,891 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:58:19,098 INFO fishing_bot.bot: Заброс
-2026-09-17 17:58:22,944 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.772
-2026-09-17 17:58:24,160 INFO fishing_bot.bot: Заброс
-2026-09-17 17:58:27,990 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.772
-2026-09-17 17:58:29,181 INFO fishing_bot.bot: Заброс
-2026-09-17 17:58:31,653 INFO fishing_bot.bot: Поплавок найден за 2.96 с: (1002, 494), confidence=0.881
-2026-09-17 17:58:41,144 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=95.0 velocity=291.5
-2026-09-17 17:58:41,266 INFO fishing_bot.bot: ПКМ выполнен: (1044, 591)
-2026-09-17 17:58:43,289 INFO fishing_bot.bot: Заброс
-2026-09-17 17:58:45,131 INFO fishing_bot.bot: Поплавок найден за 2.33 с: (1003, 495), confidence=0.893
-2026-09-17 17:58:46,549 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
-2026-09-17 17:58:47,724 INFO fishing_bot.bot: Заброс
-2026-09-17 17:58:50,849 INFO fishing_bot.bot: Поплавок найден за 3.59 с: (932, 367), confidence=0.828
-2026-09-17 17:59:09,307 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:59:10,541 INFO fishing_bot.bot: Заброс
-2026-09-17 17:59:13,699 INFO fishing_bot.bot: Поплавок найден за 3.67 с: (975, 369), confidence=0.772
-2026-09-17 17:59:32,074 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 17:59:33,304 INFO fishing_bot.bot: Заброс
-2026-09-17 17:59:35,190 INFO fishing_bot.bot: Поплавок найден за 2.40 с: (1080, 441), confidence=0.869
-2026-09-17 17:59:46,663 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=117.0 velocity=777.2
-2026-09-17 17:59:46,775 INFO fishing_bot.bot: ПКМ выполнен: (1121, 559)
-2026-09-17 17:59:48,810 INFO fishing_bot.bot: Заброс
-2026-09-17 17:59:52,652 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.859
-2026-09-17 17:59:53,857 INFO fishing_bot.bot: Заброс
-2026-09-17 17:59:57,032 INFO fishing_bot.bot: Поплавок найден за 3.68 с: (841, 376), confidence=0.856
-2026-09-17 18:00:15,414 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 18:00:16,627 INFO fishing_bot.bot: Заброс
-2026-09-17 18:00:19,764 INFO fishing_bot.bot: Поплавок найден за 3.65 с: (842, 364), confidence=0.756
-2026-09-17 18:00:38,136 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 18:00:39,334 INFO fishing_bot.bot: Заброс
-2026-09-17 18:00:41,813 INFO fishing_bot.bot: Поплавок найден за 2.96 с: (1074, 393), confidence=0.913
-2026-09-17 18:00:52,620 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=81.0 velocity=339.3
-2026-09-17 18:00:52,732 INFO fishing_bot.bot: ПКМ выполнен: (1059, 474)
-2026-09-17 18:00:54,774 INFO fishing_bot.bot: Заброс
-2026-09-17 18:00:56,624 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (1074, 394), confidence=0.880
-2026-09-17 18:00:58,292 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=109.5 velocity=105.7
-2026-09-17 18:00:58,405 INFO fishing_bot.bot: ПКМ выполнен: (1007, 595)
-2026-09-17 18:01:00,436 INFO fishing_bot.bot: Заброс
-2026-09-17 18:01:02,277 INFO fishing_bot.bot: Поплавок найден за 2.31 с: (831, 480), confidence=0.877
-2026-09-17 18:01:21,993 WARNING fishing_bot.bot: Поклёвка не обнаружена: timeout
-2026-09-17 18:01:23,197 INFO fishing_bot.bot: Заброс
-2026-09-17 18:01:25,037 INFO fishing_bot.bot: Поплавок найден за 2.34 с: (934, 472), confidence=0.867
-2026-09-17 18:01:38,327 INFO fishing_bot.bot: Поклёвка: submerged_after_drop drop=9.0 velocity=66.4
-2026-09-17 18:01:38,436 INFO fishing_bot.bot: ПКМ выполнен: (939, 478)
-2026-09-17 18:01:40,474 INFO fishing_bot.bot: Заброс
-2026-09-17 18:01:43,613 INFO fishing_bot.bot: Поплавок найден за 3.64 с: (874, 374), confidence=0.848
-2026-09-17 18:01:55,675 INFO fishing_bot.bot: Поклёвка: strong_downward_motion drop=86.0 velocity=240.5
-2026-09-17 18:01:55,788 INFO fishing_bot.bot: ПКМ выполнен: (877, 460)
-2026-09-17 18:01:57,815 INFO fishing_bot.bot: Заброс
-2026-09-17 18:01:59,125 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
+2026-09-17 21:30:54,073 INFO fishing_bot.bot: Бот запущен
+2026-09-17 21:30:54,074 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
+2026-09-17 21:30:57,304 INFO fishing_bot.bot: WoW снова активно; работа продолжена
+2026-09-17 21:30:57,834 INFO fishing_bot.bot: Заброс
+2026-09-17 21:31:01,895 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.592
+2026-09-17 21:31:03,098 INFO fishing_bot.bot: Заброс
+2026-09-17 21:31:07,131 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.576
+2026-09-17 21:31:08,321 INFO fishing_bot.bot: Заброс
+2026-09-17 21:31:12,558 INFO fishing_bot.bot: Поплавок найден за 4.72 с: (1074, 375), confidence=0.747
+2026-09-17 21:31:12,939 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.640 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,005 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.643 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,135 DEBUG fishing_bot.tracker: TRACK x=1086 y=374 confidence=0.789 dx=12.0 dy=-1.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:13,209 DEBUG fishing_bot.tracker: TRACK x=1076 y=372 confidence=0.670 dx=-10.0 dy=-2.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:13,289 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.670 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:13,370 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.627 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,440 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.627 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,585 DEBUG fishing_bot.tracker: TRACK x=1088 y=375 confidence=0.855 dx=11.0 dy=3.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:13,658 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.656 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,743 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.640 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:13,885 DEBUG fishing_bot.tracker: TRACK x=1088 y=375 confidence=0.838 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:13,957 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.639 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:14,039 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.658 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:14,105 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.664 dx=-11.0 dy=-3.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:14,174 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.668 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:31:14,258 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.665 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:14,324 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.663 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:31:14,392 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.655 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:14,474 DEBUG fishing_bot.tracker: TRACK x=1076 y=373 confidence=0.666 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=4.6
+2026-09-17 21:31:14,558 DEBUG fishing_bot.tracker: TRACK x=1076 y=373 confidence=0.666 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=4.3
+2026-09-17 21:31:14,627 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:14,710 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.667 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=4.2
+2026-09-17 21:31:14,794 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.681 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=4.2
+2026-09-17 21:31:14,878 DEBUG fishing_bot.tracker: TRACK x=1075 y=375 confidence=0.669 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=5.9
+2026-09-17 21:31:14,957 DEBUG fishing_bot.tracker: TRACK x=1074 y=375 confidence=0.663 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.5 velocity=6.1
+2026-09-17 21:31:15,042 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.668 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=6.1
+2026-09-17 21:31:15,107 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.663 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=6.7
+2026-09-17 21:31:15,189 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.637 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,275 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.640 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,393 DEBUG fishing_bot.tracker: TRACK x=1085 y=378 confidence=0.730 dx=11.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=5.0 velocity=5.7
+2026-09-17 21:31:15,474 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.624 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,540 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.629 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,679 DEBUG fishing_bot.tracker: TRACK x=1084 y=377 confidence=0.702 dx=-1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.5 velocity=1.7
+2026-09-17 21:31:15,756 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.613 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,835 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.641 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:15,959 DEBUG fishing_bot.tracker: TRACK x=1085 y=375 confidence=0.743 dx=1.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=-5.3
+2026-09-17 21:31:16,024 DEBUG fishing_bot.tracker: TRACK x=1074 y=373 confidence=0.665 dx=-11.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-11.6
+2026-09-17 21:31:16,090 DEBUG fishing_bot.tracker: TRACK x=1074 y=372 confidence=0.672 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-23.0
+2026-09-17 21:31:16,176 DEBUG fishing_bot.tracker: TRACK x=1075 y=372 confidence=0.677 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-6.6
+2026-09-17 21:31:16,240 DEBUG fishing_bot.tracker: TRACK x=1076 y=372 confidence=0.670 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:16,309 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.652 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:16,393 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.635 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:16,513 DEBUG fishing_bot.tracker: TRACK x=1087 y=375 confidence=0.839 dx=11.0 dy=3.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=8.9
+2026-09-17 21:31:16,592 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.655 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:16,659 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.654 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:16,775 DEBUG fishing_bot.tracker: TRACK x=1087 y=375 confidence=0.833 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.6
+2026-09-17 21:31:16,861 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.648 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:16,927 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.658 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,009 DEBUG fishing_bot.tracker: TRACK x=1078 y=372 confidence=0.668 dx=-9.0 dy=-3.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-6.0
+2026-09-17 21:31:17,092 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.656 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,159 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.632 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,301 DEBUG fishing_bot.tracker: TRACK x=1087 y=374 confidence=0.854 dx=9.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-1.9
+2026-09-17 21:31:17,375 DEBUG fishing_bot.tracker: TRACK x=1076 y=372 confidence=0.667 dx=-11.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:17,445 DEBUG fishing_bot.tracker: TRACK x=1076 y=373 confidence=0.662 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-6.9
+2026-09-17 21:31:17,526 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.656 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,613 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.657 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,744 DEBUG fishing_bot.tracker: TRACK x=1086 y=375 confidence=0.805 dx=10.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=8.1
+2026-09-17 21:31:17,809 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.646 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:17,878 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.634 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:18,015 DEBUG fishing_bot.tracker: TRACK x=1086 y=376 confidence=0.774 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=5.3
+2026-09-17 21:31:18,095 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.660 dx=-12.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=2.9
+2026-09-17 21:31:18,178 DEBUG fishing_bot.tracker: TRACK x=1074 y=377 confidence=0.678 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=6.1
+2026-09-17 21:31:18,261 DEBUG fishing_bot.tracker: TRACK x=1074 y=377 confidence=0.666 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.0
+2026-09-17 21:31:18,328 DEBUG fishing_bot.tracker: TRACK x=1073 y=377 confidence=0.669 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:31:18,411 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.659 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:18,493 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.646 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:18,616 DEBUG fishing_bot.tracker: TRACK x=1085 y=377 confidence=0.714 dx=12.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:31:18,693 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.616 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:18,763 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.598 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:18,895 DEBUG fishing_bot.tracker: TRACK x=1084 y=375 confidence=0.699 dx=-1.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-3.5
+2026-09-17 21:31:18,981 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,064 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.655 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,146 DEBUG fishing_bot.tracker: TRACK x=1075 y=372 confidence=0.669 dx=-9.0 dy=-3.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=-9.5
+2026-09-17 21:31:19,212 DEBUG fishing_bot.tracker: TRACK x=1076 y=372 confidence=0.669 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=-9.5
+2026-09-17 21:31:19,295 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.665 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=0.0
+2026-09-17 21:31:19,377 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,444 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.659 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,511 DEBUG fishing_bot.tracker: TRACK x=1078 y=373 confidence=0.673 dx=1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=3.3
+2026-09-17 21:31:19,594 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.655 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,677 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.623 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,798 DEBUG fishing_bot.tracker: TRACK x=1088 y=375 confidence=0.863 dx=10.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.0
+2026-09-17 21:31:19,877 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:19,961 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.648 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:20,073 DEBUG fishing_bot.tracker: TRACK x=1087 y=374 confidence=0.838 dx=-1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=1.8
+2026-09-17 21:31:20,145 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.639 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:20,228 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.642 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:20,346 DEBUG fishing_bot.tracker: TRACK x=1087 y=374 confidence=0.819 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-1.8
+2026-09-17 21:31:20,430 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:20,495 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:20,615 DEBUG fishing_bot.tracker: TRACK x=1085 y=374 confidence=0.816 dx=-2.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:31:20,695 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.671 dx=-10.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:31:20,762 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.680 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:31:20,845 DEBUG fishing_bot.tracker: TRACK x=1075 y=375 confidence=0.680 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.7
+2026-09-17 21:31:20,911 DEBUG fishing_bot.tracker: TRACK x=1075 y=375 confidence=0.675 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.7
+2026-09-17 21:31:20,978 DEBUG fishing_bot.tracker: TRACK x=1074 y=375 confidence=0.675 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:31:21,061 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.668 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.7
+2026-09-17 21:31:21,128 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.652 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,196 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.654 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,329 DEBUG fishing_bot.tracker: TRACK x=1085 y=378 confidence=0.763 dx=11.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=8.5
+2026-09-17 21:31:21,415 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.615 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,496 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.607 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,620 DEBUG fishing_bot.tracker: TRACK x=1084 y=377 confidence=0.694 dx=-1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=1.8
+2026-09-17 21:31:21,698 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.582 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,781 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.610 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:21,921 DEBUG fishing_bot.tracker: TRACK x=1084 y=375 confidence=0.712 dx=0.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-5.1
+2026-09-17 21:31:21,996 DEBUG fishing_bot.tracker: TRACK x=1074 y=373 confidence=0.679 dx=-10.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-10.6
+2026-09-17 21:31:22,062 DEBUG fishing_bot.tracker: TRACK x=1074 y=372 confidence=0.680 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=-21.2
+2026-09-17 21:31:22,147 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,229 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,296 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.669 dx=3.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=-3.3
+2026-09-17 21:31:22,379 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,446 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.644 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,562 DEBUG fishing_bot.tracker: TRACK x=1088 y=375 confidence=0.842 dx=11.0 dy=3.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.0
+2026-09-17 21:31:22,648 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.618 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,716 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.613 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:22,861 DEBUG fishing_bot.tracker: TRACK x=1088 y=375 confidence=0.836 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.3
+2026-09-17 21:31:22,932 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.650 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,012 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.659 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,098 DEBUG fishing_bot.tracker: TRACK x=1078 y=372 confidence=0.662 dx=-10.0 dy=-3.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-5.6
+2026-09-17 21:31:23,164 DEBUG fishing_bot.tracker: TRACK x=1078 y=372 confidence=0.668 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-9.9
+2026-09-17 21:31:23,230 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.677 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:23,314 DEBUG fishing_bot.tracker: TRACK x=1077 y=372 confidence=0.683 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:23,380 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.648 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,449 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.647 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,531 DEBUG fishing_bot.tracker: TRACK x=1076 y=373 confidence=0.677 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=3.3
+2026-09-17 21:31:23,615 DEBUG fishing_bot.tracker: TRACK x=1075 y=373 confidence=0.674 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=3.3
+2026-09-17 21:31:23,697 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.666 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.0
+2026-09-17 21:31:23,781 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.658 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,847 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:23,963 DEBUG fishing_bot.tracker: TRACK x=1086 y=376 confidence=0.797 dx=11.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=8.6
+2026-09-17 21:31:24,048 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.629 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,115 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.615 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,234 DEBUG fishing_bot.tracker: TRACK x=1085 y=378 confidence=0.759 dx=-1.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=4.0 velocity=7.4
+2026-09-17 21:31:24,316 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,381 DEBUG fishing_bot.tracker: TRACK x=1073 y=377 confidence=0.671 dx=-12.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=2.4
+2026-09-17 21:31:24,447 DEBUG fishing_bot.tracker: TRACK x=1073 y=377 confidence=0.668 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=-4.7
+2026-09-17 21:31:24,531 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.648 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,634 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.652 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,750 DEBUG fishing_bot.tracker: TRACK x=1084 y=376 confidence=0.698 dx=11.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=-2.7
+2026-09-17 21:31:24,831 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:24,909 DEBUG fishing_bot.tracker: TRACK x=1073 y=374 confidence=0.663 dx=-11.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-6.5
+2026-09-17 21:31:24,993 DEBUG fishing_bot.tracker: TRACK x=1073 y=373 confidence=0.666 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-12.4
+2026-09-17 21:31:25,072 DEBUG fishing_bot.tracker: TRACK x=1074 y=372 confidence=0.661 dx=1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-3.0 velocity=-12.3
+2026-09-17 21:31:25,155 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,238 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.644 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,365 DEBUG fishing_bot.tracker: TRACK x=1087 y=374 confidence=0.832 dx=13.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=2.7
+2026-09-17 21:31:25,450 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.503 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,531 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.481 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,666 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.601 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,798 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.570 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:25,917 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.608 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,048 DEBUG fishing_bot.tracker: TRACK x=1085 y=365 confidence=0.661 dx=-2.0 dy=-9.0 ordinary=True dive=False continuous=True signal=tracking drop=-9.0 velocity=-7.2
+2026-09-17 21:31:26,118 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.515 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,199 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.505 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,316 DEBUG fishing_bot.tracker: TRACK x=1091 y=377 confidence=0.742 dx=6.0 dy=12.0 ordinary=True dive=True continuous=True signal=tracking drop=4.0 velocity=3.2
+2026-09-17 21:31:26,400 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.510 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,482 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.552 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,597 DEBUG fishing_bot.tracker: TRACK x=1087 y=375 confidence=0.853 dx=-4.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=18.2
+2026-09-17 21:31:26,669 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.619 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,753 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.629 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:26,868 DEBUG fishing_bot.tracker: TRACK x=1086 y=375 confidence=0.803 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=-3.6
+2026-09-17 21:31:26,950 DEBUG fishing_bot.tracker: TRACK x=1075 y=375 confidence=0.674 dx=-11.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:31:27,032 DEBUG fishing_bot.tracker: TRACK x=1075 y=375 confidence=0.674 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:31:27,099 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.676 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.7
+2026-09-17 21:31:27,183 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.688 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.6
+2026-09-17 21:31:27,267 DEBUG fishing_bot.tracker: TRACK x=1074 y=376 confidence=0.676 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:31:27,337 DEBUG fishing_bot.tracker: TRACK x=1074 y=377 confidence=0.668 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.5
+2026-09-17 21:31:27,420 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.659 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:27,484 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.653 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:27,605 DEBUG fishing_bot.tracker: TRACK x=1085 y=377 confidence=0.723 dx=11.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=3.0
+2026-09-17 21:31:27,684 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.607 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:27,882 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:28,002 DEBUG fishing_bot.tracker: TRACK x=1084 y=375 confidence=0.687 dx=-1.0 dy=-2.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-3.0
+2026-09-17 21:31:28,084 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.649 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:31:28,151 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.796 dx=-9.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-5.5
+2026-09-17 21:31:28,219 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.823 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-4.6
+2026-09-17 21:31:28,303 DEBUG fishing_bot.tracker: TRACK x=1075 y=374 confidence=0.818 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:31:28,385 DEBUG fishing_bot.tracker: TRACK x=1074 y=375 confidence=0.819 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.0
+2026-09-17 21:31:28,458 DEBUG fishing_bot.tracker: TRACK x=1074 y=375 confidence=0.824 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.5
+2026-09-17 21:31:28,511 WARNING fishing_bot.bot: Поклёвка не обнаружена: interrupted
+2026-09-17 21:31:29,228 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
+2026-09-17 21:31:49,450 INFO fishing_bot.bot: WoW снова активно; работа продолжена
+2026-09-17 21:31:49,965 INFO fishing_bot.bot: Заброс
+2026-09-17 21:31:51,328 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
+2026-09-17 21:31:52,045 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
+2026-09-17 21:31:57,295 INFO fishing_bot.bot: WoW снова активно; работа продолжена
+2026-09-17 21:31:57,819 INFO fishing_bot.bot: Заброс
+2026-09-17 21:31:59,183 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.000
+(.venv) PS C:\Users\alexe\PycharmProjects\Fishing_Auto> python main.py --debug
+2026-09-17 21:32:04,936 INFO fishing_bot.bot: Бот запущен
+2026-09-17 21:32:04,936 INFO fishing_bot.bot: WoW не активно; бот ждёт и не выполняет ввод
+2026-09-17 21:32:15,491 INFO fishing_bot.bot: WoW снова активно; работа продолжена
+2026-09-17 21:32:15,990 INFO fishing_bot.bot: Заброс
+2026-09-17 21:32:18,992 INFO fishing_bot.bot: Поплавок найден за 3.50 с: (789, 315), confidence=0.883
+2026-09-17 21:32:19,272 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.866 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,353 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.717 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,436 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.714 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,519 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.714 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,603 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.700 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,670 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.677 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:19,753 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.659 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:19,842 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.652 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:19,990 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.652 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:20,126 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.640 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:20,373 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.631 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:20,643 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.603 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:20,754 DEBUG fishing_bot.tracker: TRACK x=788 y=314 confidence=0.684 dx=-1.0 dy=-2.0 ordinary=True dive=False continuous=True signal=building_baseline drop=0.0 velocity=0.0
+2026-09-17 21:32:20,853 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.728 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=-1.7
+2026-09-17 21:32:20,956 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.732 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:32:21,052 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.732 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-2.0 velocity=0.0
+2026-09-17 21:32:21,150 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.723 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=-0.5 velocity=5.2
+2026-09-17 21:32:21,230 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.726 dx=1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:21,321 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.754 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-5.8
+2026-09-17 21:32:21,403 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.766 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=5.8
+2026-09-17 21:32:21,488 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.751 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.0
+2026-09-17 21:32:21,570 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.742 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-6.0
+2026-09-17 21:32:21,654 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.740 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-6.0
+2026-09-17 21:32:21,741 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.739 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:21,838 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.738 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:21,938 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.740 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:22,024 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.734 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-0.5 velocity=0.0
+2026-09-17 21:32:22,109 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.725 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:22,190 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.724 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.0
+2026-09-17 21:32:22,274 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.719 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.1
+2026-09-17 21:32:22,359 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.704 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:22,438 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.689 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.1
+2026-09-17 21:32:22,523 DEBUG fishing_bot.tracker: TRACK x=791 y=318 confidence=0.701 dx=2.0 dy=2.0 ordinary=True dive=False continuous=True signal=tracking drop=4.0 velocity=18.2
+2026-09-17 21:32:22,609 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.571 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:22,690 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.525 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:22,841 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.650 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:22,985 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.542 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:23,127 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.530 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:23,262 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.531 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:23,392 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.586 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:23,478 DEBUG fishing_bot.tracker: TRACK x=793 y=314 confidence=0.710 dx=2.0 dy=-4.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-1.9
+2026-09-17 21:32:23,557 DEBUG fishing_bot.tracker: TRACK x=792 y=315 confidence=0.741 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=-2.9
+2026-09-17 21:32:23,640 DEBUG fishing_bot.tracker: TRACK x=791 y=315 confidence=0.759 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.2
+2026-09-17 21:32:23,723 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.735 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:23,807 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.731 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:23,889 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.717 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:23,974 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.696 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.0
+2026-09-17 21:32:24,060 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.694 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.9
+2026-09-17 21:32:24,142 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.679 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:24,226 DEBUG fishing_bot.tracker: TRACK x=789 y=317 confidence=0.683 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.0
+2026-09-17 21:32:24,309 DEBUG fishing_bot.tracker: TRACK x=789 y=317 confidence=0.681 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.0
+2026-09-17 21:32:24,390 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.658 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:24,456 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.655 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:24,607 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.651 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:24,746 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.627 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:24,884 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.607 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:25,015 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.594 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:25,170 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.635 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:25,261 DEBUG fishing_bot.tracker: TRACK x=788 y=314 confidence=0.675 dx=-1.0 dy=-3.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-2.9
+2026-09-17 21:32:25,344 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.693 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-2.9
+2026-09-17 21:32:25,426 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.708 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,508 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.720 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,596 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.739 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,681 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.739 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,762 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.755 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,845 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.758 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:25,930 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.757 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:26,006 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.747 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:26,092 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.735 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=6.2
+2026-09-17 21:32:26,161 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.730 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:26,243 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.739 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-6.6
+2026-09-17 21:32:26,328 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.745 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:26,414 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.756 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:26,492 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.747 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:26,579 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.729 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:26,665 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.706 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:26,744 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.717 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.1
+2026-09-17 21:32:26,825 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.727 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.2
+2026-09-17 21:32:26,898 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.718 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:26,976 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.706 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.6
+2026-09-17 21:32:27,061 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.705 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.1
+2026-09-17 21:32:27,145 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.680 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:32:27,226 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.671 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:32:27,313 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.656 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:27,394 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.654 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:27,540 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.649 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:27,673 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.645 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:27,812 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.650 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:27,951 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.601 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:28,096 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.627 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:28,179 DEBUG fishing_bot.tracker: TRACK x=788 y=315 confidence=0.669 dx=-1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=-1.0
+2026-09-17 21:32:28,261 DEBUG fishing_bot.tracker: TRACK x=788 y=314 confidence=0.677 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-1.9
+2026-09-17 21:32:28,347 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.709 dx=1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-6.0
+2026-09-17 21:32:28,431 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.714 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:28,527 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.712 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=0.0
+2026-09-17 21:32:28,612 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.713 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.5
+2026-09-17 21:32:28,695 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.716 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=6.0
+2026-09-17 21:32:28,779 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.736 dx=1.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=-6.0
+2026-09-17 21:32:28,869 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.764 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:28,964 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.778 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.4
+2026-09-17 21:32:29,043 DEBUG fishing_bot.tracker: TRACK x=790 y=315 confidence=0.760 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:29,130 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.744 dx=0.0 dy=-1.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-6.0
+2026-09-17 21:32:29,213 DEBUG fishing_bot.tracker: TRACK x=790 y=314 confidence=0.746 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=-5.9
+2026-09-17 21:32:29,298 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.745 dx=-1.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:29,379 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.746 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:29,463 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.743 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:29,549 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.737 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:29,634 DEBUG fishing_bot.tracker: TRACK x=789 y=314 confidence=0.719 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=-1.0 velocity=0.0
+2026-09-17 21:32:29,730 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.716 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=0.0 velocity=5.5
+2026-09-17 21:32:29,812 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.710 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=5.6
+2026-09-17 21:32:29,897 DEBUG fishing_bot.tracker: TRACK x=789 y=315 confidence=0.697 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=1.0 velocity=0.0
+2026-09-17 21:32:29,981 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.673 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=5.9
+2026-09-17 21:32:30,064 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.689 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=6.0
+2026-09-17 21:32:30,149 DEBUG fishing_bot.tracker: TRACK x=789 y=316 confidence=0.686 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:32:30,231 DEBUG fishing_bot.tracker: TRACK x=789 y=317 confidence=0.678 dx=0.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=6.0
+2026-09-17 21:32:30,315 DEBUG fishing_bot.tracker: TRACK x=789 y=317 confidence=0.679 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=6.1
+2026-09-17 21:32:30,401 DEBUG fishing_bot.tracker: TRACK x=789 y=317 confidence=0.661 dx=0.0 dy=0.0 ordinary=True dive=False continuous=True signal=tracking drop=2.0 velocity=0.0
+2026-09-17 21:32:30,496 DEBUG fishing_bot.tracker: TRACK x=788 y=318 confidence=0.671 dx=-1.0 dy=1.0 ordinary=True dive=False continuous=True signal=tracking drop=3.0 velocity=5.5
+2026-09-17 21:32:30,581 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.654 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:30,667 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.643 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:30,804 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.641 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:30,955 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.616 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,085 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.590 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,219 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.602 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,353 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.601 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,502 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.634 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,640 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.594 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,765 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.571 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,902 DEBUG fishing_bot.tracker: TRACK x=None y=None confidence=0.570 dx=0.0 dy=0.0 ordinary=True dive=False continuous=False signal=temporarily_lost drop=0.0 velocity=0.0
+2026-09-17 21:32:31,903 WARNING fishing_bot.bot: Поклёвка не обнаружена: tracker_lost
+2026-09-17 21:32:33,149 INFO fishing_bot.bot: Заброс
+2026-09-17 21:32:37,799 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.581
+2026-09-17 21:32:39,065 INFO fishing_bot.bot: Заброс
+2026-09-17 21:32:43,846 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.709
+2026-09-17 21:32:45,158 INFO fishing_bot.bot: Заброс
+2026-09-17 21:32:49,189 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.578
+2026-09-17 21:32:50,488 INFO fishing_bot.bot: Заброс
+2026-09-17 21:32:54,481 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.693
+2026-09-17 21:32:55,805 INFO fishing_bot.bot: Заброс
+2026-09-17 21:33:00,464 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.643
+2026-09-17 21:33:01,749 INFO fishing_bot.bot: Заброс
+2026-09-17 21:33:03,956 WARNING fishing_bot.bot: Заброс не подтверждён: подходящий новый поплавок не найден; best=0.550

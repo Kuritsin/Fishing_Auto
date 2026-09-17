@@ -207,6 +207,9 @@ class FishingBot:
         if not self.input.move(found.x, found.y):
             self.log.info("Наведение отменено: WoW больше не активно")
             return False
+        # Finding the bobber can take several seconds.  The fishing window must
+        # start after it was found; otherwise a slow finder silently shortens
+        # the useful bite wait to about 18 seconds.
         result = self.tracker.wait(found, self.templates, client,
                                    remaining_cast_time(cast_started, time.monotonic(),
                                                        SETTINGS.cast_timeout),
