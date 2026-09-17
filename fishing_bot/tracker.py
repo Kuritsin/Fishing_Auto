@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import deque
 from collections.abc import Callable
 from dataclasses import dataclass
 import logging
@@ -58,6 +59,8 @@ class BobberTracker:
         last = initial
         missing = 0
         lost_since: float | None = None
+        tracking_started = time.monotonic()
+        rejected_matches: deque[tuple[int, int]] = deque(maxlen=3)
 
         if 0 <= initial.template_index < len(templates):
             preferred_templates = [
@@ -185,6 +188,7 @@ class BobberTracker:
                 last = current
                 missing = 0
                 lost_since = None
+                rejected_matches.clear()
 
                 signal = detector.update(
                     now,
@@ -208,6 +212,34 @@ class BobberTracker:
                     None,
                     None,
                 )
+
+                # On noisy water a bite can hide the body completely instead
+                # of producing a trackable downward position.  The matcher
+                # then jumps between different splash/reflection fragments
+                # below the last stable bobber.  Detect that short, spatially
+                # incoherent burst without ever adopting it as a click point.
+                if current.found and dy >= height * 0.75:
+                    rejected_matches.append((current.x, current.y))
+                else:
+                    rejected_matches.clear()
+
+                if (
+                    now - tracking_started >= self.settings.bite_warmup_seconds
+                    and len(rejected_matches) >= 2
+                ):
+                    xs = [point[0] for point in rejected_matches]
+                    ys = [point[1] for point in rejected_matches]
+                    incoherent = (
+                        max(xs) - min(xs) >= width * 0.75
+                        or max(ys) - min(ys) >= height * 0.35
+                    )
+                    if incoherent:
+                        return BiteResult(
+                            True,
+                            click_x,
+                            click_y,
+                            "visual_disruption",
+                        )
 
             self.log.debug(
                 "TRACK x=%s y=%s confidence=%.3f dx=%.1f dy=%.1f "
