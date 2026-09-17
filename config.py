@@ -64,7 +64,10 @@ class Settings:
     window_titles: tuple[str, ...] = ("world of warcraft",)
     cast_settle_seconds: float = 1.25
     find_timeout: float = 2.5
-    attempt_timeout: float = 22.0
+    # TBC has a 22-second fishing channel.  Shorter clients (including later
+    # Wrath patches) remain compatible because disappearance ends tracking
+    # early; this value is only the maximum lifetime of one cast.
+    cast_timeout: float = 22.0
     tracker_fps: float = 24.0
     match_confidence: float = 0.62
     masked_match_confidence: float = 0.72
