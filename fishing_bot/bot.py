@@ -21,6 +21,11 @@ from .window import WowWindow
 REQUIRED_VISION_API_VERSION = 3
 
 
+def remaining_cast_time(cast_started: float, now: float, timeout: float) -> float:
+    """Return the part of the in-game cast which is still available."""
+    return max(0.0, cast_started + timeout - now)
+
+
 def validate_vision_api() -> None:
     actual = getattr(vision, "VISION_API_VERSION", 0)
     if actual != REQUIRED_VISION_API_VERSION:
@@ -132,17 +137,32 @@ class FishingBot:
             found = last_candidates[0] if last_candidates else vision.Detection(False)
             if found.confidence > best.confidence:
                 best = found
-            if found.found and previous.found and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
-                confirmations += 1
-            else:
-                confirmations = 1 if found.found else 0
-            previous = found
             masked = (0 <= found.template_index < len(self.templates) and
                       self.templates[found.template_index].mask is not None)
+            normal_threshold = (SETTINGS.masked_match_confidence if masked else
+                                SETTINGS.match_confidence)
+            weak = found.confidence >= normal_threshold - SETTINGS.finder_weak_margin
+            eligible = found.found or weak
+            previous_eligible = previous.found or previous.confidence >= (
+                normal_threshold - SETTINGS.finder_weak_margin
+            )
+            if eligible and previous_eligible and abs(found.x - previous.x) < found.size[0] and abs(found.y - previous.y) < found.size[1]:
+                confirmations += 1
+            else:
+                confirmations = 1 if eligible else 0
+            previous = found
             strong_threshold = (SETTINGS.strong_masked_match_confidence if masked else
                                 SETTINGS.strong_match_confidence)
-            required = 1 if found.confidence >= strong_threshold else 2
+            required = (1 if found.confidence >= strong_threshold else
+                        2 if found.found else SETTINGS.finder_weak_confirmations)
             if confirmations >= required:
+                if not found.found:
+                    found = vision.Detection(
+                        True, found.x, found.y, found.confidence, found.size,
+                        found.template_index, found.box, found.structural_score,
+                        found.color_score, found.novelty_score,
+                    )
+                    last_candidates[0] = found
                 self._save_find_debug(last_frame, last_novelty, found, last_candidates)
                 return found
             self.stop_event.wait(0.06)
@@ -155,7 +175,7 @@ class FishingBot:
         client = self.window.client_region()
         if not client or not self.safe():
             return False
-        started = time.monotonic(); deadline = started + SETTINGS.attempt_timeout
+        started = time.monotonic()
         search = client.inset(0.08, 0.18, 0.16)
         background = []
         for _ in range(8):
@@ -163,6 +183,11 @@ class FishingBot:
             if self.stop_event.wait(0.035):
                 return False
         self.log.info("Заброс")
+        # The in-game channel begins with the cast, not when the finder later
+        # discovers the bobber.  Keeping one cast deadline works for TBC and
+        # for shorter expansion versions, where tracker_lost ends it early.
+        cast_started = time.monotonic()
+        deadline = cast_started + SETTINGS.cast_timeout
         if self.input.dry_run:
             self.log.info("DRY RUN: выполните заброс вручную в течение 3 секунд")
             if self.stop_event.wait(3.0):
@@ -183,7 +208,8 @@ class FishingBot:
             self.log.info("Наведение отменено: WoW больше не активно")
             return False
         result = self.tracker.wait(found, self.templates, client,
-                                   max(0.0, deadline - time.monotonic()),
+                                   remaining_cast_time(cast_started, time.monotonic(),
+                                                       SETTINGS.cast_timeout),
                                    self.stop_event, self.safe)
         if not result.detected:
             self.log.warning("Поклёвка не обнаружена: %s", result.reason)

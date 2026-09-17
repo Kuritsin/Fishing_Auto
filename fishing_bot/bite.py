@@ -34,6 +34,7 @@ class BiteSignalDetector:
         self.confirmations = 0
         self.last_drop = self.last_velocity = 0.0
         self.pending_dive = False
+        self.pending_submerge = False
         self.started_at: float | None = None
 
     def update(
@@ -56,6 +57,14 @@ class BiteSignalDetector:
                 return BiteSignal(
                     True,
                     "submerged_after_drop",
+                    self.last_drop,
+                    self.last_velocity,
+                )
+
+            if warmed_up and self.pending_submerge:
+                return BiteSignal(
+                    True,
+                    "submerged_after_small_drop",
                     self.last_drop,
                     self.last_velocity,
                 )
@@ -124,6 +133,14 @@ class BiteSignalDetector:
         )
 
         self.pending_dive = downward
+        # In bright moving water the body can disappear before a full-size
+        # downward match is available.  A smaller but still fast downward
+        # lead-in followed immediately by loss is a useful independent signal.
+        self.pending_submerge = (
+            self.last_drop >= max(3.0, self.height * self.drop_ratio * 0.50)
+            and self.last_velocity >= max(12.0, self.height * self.velocity_ratio * 0.45)
+            and self.last_drop > horizontal * 0.45
+        )
         self.confirmations = (
             self.confirmations + 1
             if downward
